@@ -1,5 +1,8 @@
 import React from 'react';
-import telegram from './assets/img/icons/telegram.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { faTelegram } from '@fortawesome/free-brands-svg-icons'
+import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 
 
 function App() {
@@ -19,19 +22,19 @@ return (
                 <button className="header__search-btn">Поиск</button>
             </div>
             <div className="header__contacts">
-                <a href="" className="header__contacts-link"><img src={telegram} alt=""/></a>
-                <a href="" className="header__contacts-link"><img src="img/icons/instagram.png" alt=""/></a>
+                <a href="" className="header__contacts-link"><FontAwesomeIcon className="header__contacts-icon" icon={faTelegram} /></a>
+                <a href="" className="header__contacts-link"><FontAwesomeIcon className="header__contacts-icon" icon={faInstagram} /></a>
                 <div className="header__numbers" id="headerNumbers">
-                <a href="#" className="header__number">+380 (50) 200 00 00</a>
-                <div className="header__numbers-list">
-                    <a href="" className="header__number">+380 (50) 200 00 00</a>
-                    <a href="" className="header__number">+380 (50) 200 00 00</a>
-                    <a href="" className="header__number">+380 (50) 200 00 00</a>
-                </div>
+                    <a href="#" className="header__number">+380 (50) 200 00 00</a>
+                    <div className="header__numbers-list">
+                        <a href="" className="header__number">+380 (50) 200 00 00</a>
+                        <a href="" className="header__number">+380 (50) 200 00 00</a>
+                        <a href="" className="header__number">+380 (50) 200 00 00</a>
+                    </div>
                 </div>
             </div>
         <a href="" className="header__cart">
-          <img src="img/icons/cart.png" alt="" />
+            <FontAwesomeIcon className="header__cart-icon" icon={faShoppingCart} />
           <div className="header__cart-amount">9</div>
         </a>
       </div>

@@ -63,7 +63,7 @@ body {
         height: 2px;
         background: $brand-black;
         &:before {
-          content: "";
+          content: '';
           position: absolute;
           top: 0;
           left: 0;
@@ -72,7 +72,7 @@ body {
           background: $brand-black;
         }
         &:after {
-          content: "";
+          content: '';
           position: absolute;
           bottom: 0;
           left: 0;
@@ -126,12 +126,9 @@ body {
     display: flex;
     gap: 20px;
     align-items: center;
-    &-link {
-      height: 23px;
-      width: 23px;
-      img {
-        width: 100%;
-      }
+    &-icon {
+      font-size: 28px;
+      color: $text-gray;
     }
   }
   &__numbers {
@@ -167,9 +164,9 @@ body {
     position: relative;
     height: 23px;
     width: 23px;
-    img {
-      width: 100%;
-      object-fit: contain;
+    &-icon {
+      font-size: 25px;
+      font-weight: 100;
     }
     &-amount {
       position: absolute;
