@@ -1,44 +1,14 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
-import { faTelegram } from '@fortawesome/free-brands-svg-icons'
-import { faInstagram } from '@fortawesome/free-brands-svg-icons'
-
+import category from './assets/img/category/category.jpg'
+import product from './assets/img/product-card.jpg'
+import banner from'./assets/img/banners/banner.jpg'
+import Header from './Header';
 
 function App() {
 return (
 <div className="">
-        <header className="header">
-            <div className="header__container container">
-            <button className="header__menu">
-              <div className="header__menu-burger">
-                  <span></span>
-              </div>
-              <span>Меню</span>
-            </button>
-            <a href="" className="header__logo">Logo</a>
-            <div className="header__search">
-                <input type="text" className="header__search-input" />
-                <button className="header__search-btn">Поиск</button>
-            </div>
-            <div className="header__contacts">
-                <a href="" className="header__contacts-link"><FontAwesomeIcon className="header__contacts-icon" icon={faTelegram} /></a>
-                <a href="" className="header__contacts-link"><FontAwesomeIcon className="header__contacts-icon" icon={faInstagram} /></a>
-                <div className="header__numbers" id="headerNumbers">
-                    <a href="#" className="header__number">+380 (50) 200 00 00</a>
-                    <div className="header__numbers-list">
-                        <a href="" className="header__number">+380 (50) 200 00 00</a>
-                        <a href="" className="header__number">+380 (50) 200 00 00</a>
-                        <a href="" className="header__number">+380 (50) 200 00 00</a>
-                    </div>
-                </div>
-            </div>
-        <a href="" className="header__cart">
-            <FontAwesomeIcon className="header__cart-icon" icon={faShoppingCart} />
-          <div className="header__cart-amount">9</div>
-        </a>
-      </div>
-    </header>
+    <Header />
 
     <section className="intro">
         <div className="intro__container container">
@@ -48,7 +18,7 @@ return (
                 <button className="intro__btn">Каталог</button>
             </div>
             <div className="intro__slider">
-                <img src="img/banners/banner.jpg" alt="" />
+                <img src={banner} alt="" />
             </div>
         </div>
     </section>
@@ -57,20 +27,20 @@ return (
         <h2 className="main-title">Каталог товаров</h2>
         <div className="categories__container container">
             <a href="" className="category">
-                <img className="category__img" src="img/category/category.jpg" alt="" />
+                <img className="category__img" src={category} alt="" />
                 <div className="category__name">Elf bar 1500</div>
                 <div className="category__label">Распродано</div>
             </a>
             <a href="" className="category">
-                <img className="category__img" src="img/category/category.jpg" alt="" />
+                <img className="category__img" src={category} alt="" />
                 <div className="category__name">Elf bar 2000</div>
             </a>
             <a href="" className="category">
-                <img className="category__img" src="img/category/category.jpg" alt="" />
+                <img className="category__img" src={category} alt="" />
                 <div className="category__name">Elf bar 2500</div>
             </a>
             <a href="" className="category">
-                <img className="category__img" src="img/category/category.jpg" alt="" />
+                <img className="category__img" src={category} alt="" />
                 <div className="category__name">Elf bar lux 1500</div>
             </a>
         </div>
@@ -80,7 +50,7 @@ return (
         <h2 className="main-title">Популярные товары</h2>
         <div className="popular-products__container container">
             <a href="#" className="product-card">
-                <img src="img/product-card.jpg" alt="" className="product-card__img" />
+                <img src={product} alt="" className="product-card__img" />
                 <span className="product-card__description">
                     <span className="product-card__name">Elf Bar 2000 Banana Milk Disposable Pod Device</span>
                     <span className="product-card__discount">Старая цена <span>300 грн</span></span>
@@ -92,7 +62,7 @@ return (
                 </span>
             </a>
             <a href="#" className="product-card">
-                <img src="img/product-card.jpg" alt="" className="product-card__img" />
+                <img src={product} alt="" className="product-card__img" />
                 <span className="product-card__description">
                     <span className="product-card__name">Elf Bar 2000 Banana Milk Disposable Pod Device</span>
                     <span className="product-card__discount">Старая цена <span>300 грн</span></span>
@@ -104,7 +74,7 @@ return (
                 </span>
             </a>
             <a href="#" className="product-card">
-                <img src="img/product-card.jpg" alt="" className="product-card__img" />
+                <img src={product} alt="" className="product-card__img" />
                 <span className="product-card__description">
                     <span className="product-card__name">Elf Bar 2000 Banana Milk Disposable Pod Device</span>
                     <span className="product-card__discount">Старая цена <span>300 грн</span></span>
@@ -116,7 +86,7 @@ return (
                 </span>
             </a>
             <a href="#" className="product-card">
-                <img src="img/product-card.jpg" alt="" className="product-card__img" />
+                <img src={product} alt="" className="product-card__img" />
                 <span className="product-card__description">
                     <span className="product-card__name">Elf Bar 2000 Banana Milk Disposable Pod Device</span>
                     <span className="product-card__discount">Старая цена <span>300 грн</span></span>
@@ -135,11 +105,11 @@ return (
             <div className="product">
                 <div className="product__column">
                     <div className="product__wrapper">
-                        <img src="img/product-card.jpg" alt="" className="product__img" />
+                        <img src={product} alt="" className="product__img" />
                         <div className="product__preview-wrapper">
-                            <img src="img/product-card.jpg" alt="" className="product__preview" />
-                            <img src="img/product-card.jpg" alt="" className="product__preview" />
-                            <img src="img/product-card.jpg" alt="" className="product__preview" />
+                            <img src={product} alt="" className="product__preview" />
+                            <img src={product} alt="" className="product__preview" />
+                            <img src={product} alt="" className="product__preview" />
                         </div>
                     </div>
                     <div className="product__description">
@@ -181,7 +151,7 @@ return (
                 <div className="product-cart__body">
                 <h2 className="product-cart__title title">Корзина</h2>
                     <div className="product-cart__item cart-product">
-                        <img src="img/product-card.jpg" alt="" className="cart-product__img" />
+                        <img src={product} alt="" className="cart-product__img" />
                         <div className="cart-product__info space-between">
                             <div className="cart-product__name space-between">
                                 <span>HQD King 2000 Pina Colada 5% Disposable Pod</span>
@@ -195,7 +165,7 @@ return (
                     </div>
 
                     <div className="product-cart__item cart-product">
-                        <img src="img/product-card.jpg" alt="" className="cart-product__img" />
+                        <img src={product} alt="" className="cart-product__img" />
                         <div className="cart-product__info space-between">
                             <div className="cart-product__name space-between">
                                 <span>HQD King 2000 Pina Colada 5% Disposable Pod</span>
