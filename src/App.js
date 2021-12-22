@@ -1,9 +1,8 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import category from './assets/img/category/category.jpg'
 import product from './assets/img/product-card.jpg'
 import banner from'./assets/img/banners/banner.jpg'
-import Header from './Header';
+import { Header, Button } from './components';
 
 function App() {
 return (
