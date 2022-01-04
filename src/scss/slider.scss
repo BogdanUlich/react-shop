@@ -14,7 +14,10 @@
   &__items {
     height: 100%;
     display: flex;
-    transition: all 0.4s ease-in-out;
+  }
+  &__page {
+    min-width: 100%;
+    max-width: 100%;
   }
   &__item {
     display: flex;

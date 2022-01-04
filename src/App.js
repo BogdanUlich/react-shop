@@ -20,7 +20,7 @@ return (
                 <p className="intro__text">Официальный интернет-магазин одноразовых электронных сигарет, Elf Bar, HQD, BANG, оригинальная продукция, большой ассортимент</p>
                 <Button className="intro__btn">Каталог</Button>
             </div>
-            <Slider>
+            <Slider infinite>
                 <Slider.Page>
                     <div className="slider__item">
                         <img className="slider__img" src={banner} alt="" />
