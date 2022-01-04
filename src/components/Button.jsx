@@ -1,8 +1,9 @@
 import React from 'react'
+import classNames from 'classnames'
 
-function Button() {
+const Button = (props) => {
     return (
-        <button></button>
+        <button className={classNames('btn-black', props.className)}>{props.children}</button>
     )
 }
 

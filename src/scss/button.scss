@@ -1,0 +1,12 @@
+.btn-black {
+  border: 0;
+  background: $brand-black;
+  height: 50px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 17px;
+  cursor: pointer;
+  &:hover {
+    background: lighten($brand-black, 10%);
+  }
+}

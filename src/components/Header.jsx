@@ -1,8 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
-import { faTelegram } from '@fortawesome/free-brands-svg-icons'
-import { faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { faTelegram, faInstagram } from '@fortawesome/free-brands-svg-icons'
 
 
 function Header() {
@@ -17,7 +16,7 @@ function Header() {
             </button>
             <a href="" className="header__logo">Logo</a>
             <div className="header__search">
-                <input type="text" className="header__search-input" />
+                <input type="text" className="header__search-input" placeholder='Я ищу...'/>
                 <button className="header__search-btn">Поиск</button>
             </div>
             <div className="header__contacts">

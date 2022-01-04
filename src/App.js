@@ -1,26 +1,40 @@
 import React from 'react';
 import category from './assets/img/category/category.jpg'
 import product from './assets/img/product-card.jpg'
-import banner from'./assets/img/banners/banner.jpg'
 import { Header, Button } from './components';
+import Slider from './components/Slider/Slider';
+import banner from'./assets/img/banners/banner.jpg'
+import banner2 from'./assets/img/banners/banner2.jpg'
+
 
 function App() {
 return (
 <div className="">
     <Header />
 
+
     <section className="intro">
         <div className="intro__container container">
             <div className="intro__info">
                 <h1 className="intro__title">EMPIRE POD</h1>
                 <p className="intro__text">Официальный интернет-магазин одноразовых электронных сигарет, Elf Bar, HQD, BANG, оригинальная продукция, большой ассортимент</p>
-                <button className="intro__btn">Каталог</button>
+                <Button className="intro__btn">Каталог</Button>
             </div>
-            <div className="intro__slider">
-                <img src={banner} alt="" />
-            </div>
+            <Slider>
+                <Slider.Page>
+                    <div className="slider__item">
+                        <img className="slider__img" src={banner} alt="" />
+                    </div>
+                </Slider.Page>
+                <Slider.Page>
+                    <div className="slider__item">
+                        <img className="slider__img" src={banner2} alt="" />
+                    </div>
+                </Slider.Page>
+            </Slider>    
         </div>
     </section>
+    
 
     <section className="categories">
         <h2 className="main-title">Каталог товаров</h2>
@@ -137,7 +151,7 @@ return (
                         <div className="product__amount">
                             Количество: <input type="text" placeholder="1" />
                         </div>
-                        <button className="product__btn">В корзину</button>
+                        <Button className="product__btn">В корзину</Button>
                     </div>
                 </div>
             </div>
