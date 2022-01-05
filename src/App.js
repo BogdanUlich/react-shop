@@ -1,118 +1,16 @@
 import React from 'react';
-import category from './assets/img/category/category.jpg'
 import product from './assets/img/product-card.jpg'
-import { Header, Button } from './components';
-import Slider from './components/Slider/Slider';
-import banner from'./assets/img/banners/banner.jpg'
-import banner2 from'./assets/img/banners/banner2.jpg'
+import Header from './components/Header/Header';
+import Button  from './components/Buttons/Button';
+import Main from './components/Main/Main';
 
 
 function App() {
 return (
 <div className="">
     <Header />
-
-
-    <section className="intro">
-        <div className="intro__container container">
-            <div className="intro__info">
-                <h1 className="intro__title">EMPIRE POD</h1>
-                <p className="intro__text">Официальный интернет-магазин одноразовых электронных сигарет, Elf Bar, HQD, BANG, оригинальная продукция, большой ассортимент</p>
-                <Button className="intro__btn">Каталог</Button>
-            </div>
-            <Slider infinite>
-                <Slider.Page>
-                    <div className="slider__item">
-                        <img className="slider__img" src={banner} alt="" />
-                    </div>
-                </Slider.Page>
-                <Slider.Page>
-                    <div className="slider__item">
-                        <img className="slider__img" src={banner2} alt="" />
-                    </div>
-                </Slider.Page>
-            </Slider>    
-        </div>
-    </section>
+    <Main />
     
-
-    <section className="categories">
-        <h2 className="main-title">Каталог товаров</h2>
-        <div className="categories__container container">
-            <a href="" className="category">
-                <img className="category__img" src={category} alt="" />
-                <div className="category__name">Elf bar 1500</div>
-                <div className="category__label">Распродано</div>
-            </a>
-            <a href="" className="category">
-                <img className="category__img" src={category} alt="" />
-                <div className="category__name">Elf bar 2000</div>
-            </a>
-            <a href="" className="category">
-                <img className="category__img" src={category} alt="" />
-                <div className="category__name">Elf bar 2500</div>
-            </a>
-            <a href="" className="category">
-                <img className="category__img" src={category} alt="" />
-                <div className="category__name">Elf bar lux 1500</div>
-            </a>
-        </div>
-    </section>
-
-    <section className="popular-products">
-        <h2 className="main-title">Популярные товары</h2>
-        <div className="popular-products__container container">
-            <a href="#" className="product-card">
-                <img src={product} alt="" className="product-card__img" />
-                <span className="product-card__description">
-                    <span className="product-card__name">Elf Bar 2000 Banana Milk Disposable Pod Device</span>
-                    <span className="product-card__discount">Старая цена <span>300 грн</span></span>
-                    <span className="product-card__price">220 грн</span>
-                    <span className="product-card__buy">
-                        <span href="" className="product-card__btn active">Купить</span>
-                        <span className="product-card__absent">Нет в наличии</span>
-                    </span>
-                </span>
-            </a>
-            <a href="#" className="product-card">
-                <img src={product} alt="" className="product-card__img" />
-                <span className="product-card__description">
-                    <span className="product-card__name">Elf Bar 2000 Banana Milk Disposable Pod Device</span>
-                    <span className="product-card__discount">Старая цена <span>300 грн</span></span>
-                    <span className="product-card__price">220 грн</span>
-                    <span className="product-card__buy">
-                        <span href="" className="product-card__btn active">Купить</span>
-                        <span className="product-card__absent">Нет в наличии</span>
-                    </span>
-                </span>
-            </a>
-            <a href="#" className="product-card">
-                <img src={product} alt="" className="product-card__img" />
-                <span className="product-card__description">
-                    <span className="product-card__name">Elf Bar 2000 Banana Milk Disposable Pod Device</span>
-                    <span className="product-card__discount">Старая цена <span>300 грн</span></span>
-                    <span className="product-card__price">220 грн</span>
-                    <span className="product-card__buy">
-                        <span href="" className="product-card__btn active">Купить</span>
-                        <span className="product-card__absent">Нет в наличии</span>
-                    </span>
-                </span>
-            </a>
-            <a href="#" className="product-card">
-                <img src={product} alt="" className="product-card__img" />
-                <span className="product-card__description">
-                    <span className="product-card__name">Elf Bar 2000 Banana Milk Disposable Pod Device</span>
-                    <span className="product-card__discount">Старая цена <span>300 грн</span></span>
-                    <span className="product-card__price">220 грн</span>
-                    <span className="product-card__buy">
-                        <span href="" className="product-card__btn active">Купить</span>
-                        <span className="product-card__absent">Нет в наличии</span>
-                    </span>
-                </span>
-            </a>
-        </div>
-    </section>
-
     <div className="product-page">
         <div className="product-page__container container">
             <div className="product">

@@ -1,0 +1,35 @@
+.category {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 15px 0;
+  border: 1px solid $brand-gray;
+  transition: 0.2s;
+  &__img {
+    width: 100%;
+  }
+  &__name {
+    font-size: 26px;
+    font-weight: 600;
+    position: absolute;
+    left: 15px;
+    bottom: 10px;
+    @media (max-width: 768px) {
+      font-size: 22px;
+    }
+  }
+  &__label {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    font-size: 19px;
+    border-radius: 20px;
+    color: #fff;
+    background: $brand-warning;
+    padding: 10px 20px;
+  }
+  &:hover {
+    box-shadow: 0px 0px 3px 2px $brand-gray;
+    transform: scale(1.01);
+  }
+}
