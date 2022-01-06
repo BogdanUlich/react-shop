@@ -74,11 +74,16 @@
       cursor: pointer;
       color: #fff;
       width: 60px;
-      background: $text-gray;
+      background-color: $text-gray;
       border: 1px solid $text-gray;
       border-radius: 0;
       border-top-right-radius: 6px;
       border-bottom-right-radius: 6px;
+      transition: all 0.2s linear;
+      &:hover {
+        background-color: $brand-black;
+        border: 1px solid $brand-black;
+      }
     }
     @media (max-width: 768px) {
       display: none;
@@ -99,6 +104,10 @@
     &-icon {
       font-size: 28px;
       color: $text-gray;
+      transition: 0.2s;
+      &:hover {
+        color: $brand-black;
+      }
     }
     @media (max-width: 768px) {
       display: none;
@@ -140,8 +149,12 @@
     &-icon {
       font-size: 23px;
       color: $text-gray;
+      transition: 0.2s;
       @media (max-width: 768px) {
         font-size: 23px;
+      }
+      &:hover {
+        color: $brand-black;
       }
     }
     &-amount {
