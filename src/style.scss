@@ -10,10 +10,11 @@ $label-success: #24e945;
 @import "./components/Slider/slider.scss";
 @import "./components/Buttons/button.scss";
 @import "./components/Product-card/product-card.scss";
-@import "./components/Category/category.scss";
+@import "./components/Categories/categories.scss";
 @import "./components/Main/main.scss";
 @import "./components/Product-page/product-page.scss";
 @import "./components/Cart/cart.scss";
+@import "./components/Sort-popup/sort.scss";
 
 html {
   width: 100%;
@@ -23,7 +24,7 @@ body {
   overflow-x: hidden;
   color: $brand-black;
   margin: 0;
-  //   background: #f8f8f8;
+  background: #f8f8f8;
 }
 *,
 :after,
@@ -35,9 +36,15 @@ textarea {
   outline: 0;
   padding: 15px;
 }
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 .space-between {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .container {
   width: 100%;

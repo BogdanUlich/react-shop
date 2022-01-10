@@ -1,5 +1,5 @@
 import React from 'react';
-import {Cart, Header, Main, ProductPage} from './components';
+import {Cart, CategoryPage, Header, Main, ProductPage} from './components';
 
 
 
@@ -7,6 +7,7 @@ function App() {
 return (
     <div className="">
         <Header />
+        <CategoryPage />
         <Main />
         <ProductPage />
         <Cart />   

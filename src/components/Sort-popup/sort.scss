@@ -1,0 +1,36 @@
+.sort {
+  position: relative;
+  &__label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    span {
+      color: $brand-warning;
+      border-bottom: 1px dotted $brand-warning;
+    }
+  }
+  &__icon {
+    font-size: 14px;
+  }
+  &__popup {
+    position: absolute;
+    right: 0px;
+    top: 30px;
+    border-radius: 4px;
+    box-shadow: 1px 1px 5px #afafaf;
+  }
+  &__link {
+    padding: 5px 20px;
+    font-weight: 500;
+    cursor: pointer;
+    &.active {
+      background: lighten($brand-warning, 40%);
+      color: $brand-warning;
+    }
+    &:hover {
+      background: lighten($brand-warning, 40%);
+      color: $brand-warning;
+    }
+  }
+}

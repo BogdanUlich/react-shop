@@ -3,7 +3,7 @@ import Slider from '../../components/Slider/Slider';
 import banner from'../../assets/img/banners/banner.jpg'
 import banner2 from'../../assets/img/banners/banner2.jpg'
 import Button  from '../Buttons/Button';
-import Category from '../Category/Category';
+import Categories from '../Categories/Categories';
 import ProductCard from '../Product-card/Product-card';
 
 
@@ -32,15 +32,9 @@ function Main() {
                     </div>
                 </section>             
 
-                <section className="categories">
-                    <h2 className="main-title">Каталог товаров</h2>
-                    <div className="categories__container container">
-                        <Category/>
-                        <Category/>
-                        <Category/>
-                        <Category/>
-                    </div>
-                </section>
+                <Categories name={['Elf bar 800','Elf bar 1500','Elf bar 2000']}
+                            onClick={(name) => console.log(name)}
+                />
 
                 <section className="popular-products">
                     <h2 className="main-title">Популярные товары</h2>
