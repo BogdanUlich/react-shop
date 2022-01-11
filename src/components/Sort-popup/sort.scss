@@ -12,6 +12,7 @@
   }
   &__icon {
     font-size: 14px;
+    align-self: baseline;
   }
   &__popup {
     position: absolute;
@@ -30,7 +31,6 @@
     }
     &:hover {
       background: lighten($brand-warning, 40%);
-      color: $brand-warning;
     }
   }
 }

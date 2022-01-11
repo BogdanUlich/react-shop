@@ -11,7 +11,7 @@ function CategoryPage() {
                         <a href="" className="breadcrumb">Elfbar 1500</a>
                     </nav>
 
-                    <Sort />
+                    <Sort items={['популярности', 'цене', 'алфавиту']}/>
                 </div>
 
                 <div className="category-page__body">

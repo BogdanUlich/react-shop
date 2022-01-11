@@ -9,7 +9,6 @@ function Categories({ name, onClick }) {
         <section className="categories">
             <h2 className="main-title">Каталог товаров</h2>
             <div className="categories__container container">
-
                 {name.map((name, index)  => (
                     <a href="#" className="category" key={`${name}_${index}`} onClick={() => onClick(name)}>
                         <img className="category__img" src={category} alt="" />

@@ -2,12 +2,18 @@ import React, { useRef } from "react";
 import { faSortDown} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from "react/cjs/react.development"
+import classNames from "classnames";
 
-function Sort() {
+function Sort({ items }) {
 
     const [visiblePopup, setVisiblePopup] = useState(false)
+    const [activeItem, setActiveItem] = useState(0)
 
     const sortRef = useRef()
+
+    const onSelectItem = (index) => {
+        setActiveItem(index)
+    }
 
     const handleOutsideClick = (e) => {
         if(!e.path.includes(sortRef.current)){
@@ -28,9 +34,13 @@ function Sort() {
             <div className="sort__label" onClick={toggleVisiblePopup}><FontAwesomeIcon className="sort__icon" icon={faSortDown} />Сортировка по:<span>популярности</span></div>
             {visiblePopup && 
             <ul className="sort__popup">
-                <li className="sort__link active">популярности</li>
-                <li className="sort__link">цене</li>
-                <li className="sort__link">алфавиту</li>
+                {items &&
+                    items.map(( name, index ) => (
+                    <li className={classNames("sort__link" , activeItem === index ? 'active' : '')} 
+                        key={`${name}_${index}`} onClick={() => onSelectItem(index)}>
+                        {name}
+                    </li>
+            ))}
             </ul>
             }
         </div>
