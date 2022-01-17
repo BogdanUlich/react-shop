@@ -1,6 +1,7 @@
 .sort {
   position: relative;
   &__label {
+    min-width: 220px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -13,13 +14,19 @@
   &__icon {
     font-size: 14px;
     align-self: baseline;
+    &.open {
+      transform: rotate(180deg);
+      align-self: flex-end;
+    }
   }
   &__popup {
     position: absolute;
+    z-index: 1;
     right: 0px;
     top: 30px;
     border-radius: 4px;
     box-shadow: 1px 1px 5px #afafaf;
+    overflow: hidden;
   }
   &__link {
     padding: 5px 20px;

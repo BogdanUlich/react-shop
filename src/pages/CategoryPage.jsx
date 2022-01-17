@@ -1,5 +1,5 @@
 import React from 'react';
-import Sort from '../Sort-popup/Sort';
+import Sort from '../components/Sort-popup/Sort';
 
 function CategoryPage() {
     return(

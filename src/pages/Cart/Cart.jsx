@@ -1,5 +1,4 @@
 import React from 'react'
-import product from '../../assets/img/product-card.jpg'
 
 
 function Cart() {
@@ -10,7 +9,7 @@ function Cart() {
                     <div className="product-cart__body">
                     <h2 className="product-cart__title title">Корзина</h2>
                         <div className="product-cart__item cart-product">
-                            <img src={product} alt="" className="cart-product__img" />
+                            <img  alt="" className="cart-product__img" />
                             <div className="cart-product__info space-between">
                                 <div className="cart-product__name space-between">
                                     <span>HQD King 2000 Pina Colada 5% Disposable Pod</span>
@@ -24,7 +23,7 @@ function Cart() {
                         </div>
 
                         <div className="product-cart__item cart-product">
-                            <img src={product} alt="" className="cart-product__img" />
+                            <img  alt="" className="cart-product__img" />
                             <div className="cart-product__info space-between">
                                 <div className="cart-product__name space-between">
                                     <span>HQD King 2000 Pina Colada 5% Disposable Pod</span>

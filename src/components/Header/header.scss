@@ -116,30 +116,43 @@
   &__numbers {
     position: relative;
     &-list {
-      padding: 10px;
+      background: #fff;
+      z-index: 2;
       border-radius: 8px;
-      border: 1px solid $brand-gray;
-      width: 165px;
+      box-shadow: 1px 1px 5px #afafaf;
       position: absolute;
       top: 30px;
-      left: -15px;
-      display: none;
+      left: -19px;
+      display: flex;
       flex-direction: column;
       align-items: center;
+      overflow: hidden;
       a {
-        margin-bottom: 10px;
-        &:last-child {
-          margin: 0;
+        padding: 6px 20px;
+        white-space: nowrap;
+        &:hover {
+          color: $brand-warning;
+          background: lighten($brand-warning, 40%);
         }
-      }
-      &.active {
-        display: flex;
       }
     }
   }
   &__number {
-    &:hover {
-      color: $brand-warning;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    &_label {
+      &:hover {
+        color: $brand-warning;
+      }
+    }
+    &-icon {
+      font-size: 14px;
+      align-self: baseline;
+      &.open {
+        transform: rotate(180deg);
+        align-self: flex-end;
+      }
     }
   }
   &__cart {

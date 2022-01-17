@@ -11,9 +11,9 @@ $label-success: #24e945;
 @import "./components/Buttons/button.scss";
 @import "./components/Product-card/product-card.scss";
 @import "./components/Categories/categories.scss";
-@import "./components/Main/main.scss";
-@import "./components/Product-page/product-page.scss";
-@import "./components/Cart/cart.scss";
+@import "./pages/Main/main.scss";
+@import "./pages/Product-page/product-page.scss";
+@import "./pages/Cart/cart.scss";
 @import "./components/Sort-popup/sort.scss";
 
 html {

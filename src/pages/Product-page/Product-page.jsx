@@ -1,6 +1,6 @@
 import React from 'react';
-import Button  from '../Buttons/Button';
-import product from '../../assets/img/product-card.jpg'
+import Button  from '../../components/Buttons/Button';
+// import product from '../../assets/img/product-card.jpg'
 
 
 function ProductPage() {
@@ -10,11 +10,11 @@ function ProductPage() {
                 <div className="product">
                     <div className="product__column">
                         <div className="product__wrapper">
-                            <img src={product} alt="" className="product__img" />
+                            <img  alt="" className="product__img" />
                             <div className="product__preview-wrapper">
-                                <img src={product} alt="" className="product__preview" />
-                                <img src={product} alt="" className="product__preview" />
-                                <img src={product} alt="" className="product__preview" />
+                                <img  alt="" className="product__preview" />
+                                <img  alt="" className="product__preview" />
+                                <img  alt="" className="product__preview" />
                             </div>
                         </div>
                         <div className="product__description">

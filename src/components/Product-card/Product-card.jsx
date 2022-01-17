@@ -1,22 +1,30 @@
-import React from 'react';
-import product from '../../assets/img/product-card.jpg'
+import classNames from 'classnames'
+import React from 'react'
+import PropTypes from 'prop-types'
+import product from '../../assets/img/blueberry.png'
 
 
-function ProductCard() {
+function ProductCard({ available, name }) {
+
     return(
-        <a href="#" className="product-card">
-            <img src={product} alt="" className="product-card__img" />
-            <span className="product-card__description">
-                <span className="product-card__name">Elf Bar 2000 Banana Milk Disposable Pod Device</span>
-                <span className="product-card__discount">Старая цена <span>300 грн</span></span>
-                <span className="product-card__price">220 грн</span>
-                <span className="product-card__buy">
-                    <span href="" className="product-card__btn active">Купить</span>
-                    <span className="product-card__absent">Нет в наличии</span>
+            <a href="#" className="product-card">
+                <span className="product-card__img"><img src={product} alt=""/></span>
+                <span className="product-card__description">
+                    <span className="product-card__name">{name}</span>
+                    <span className="product-card__discount">Старая цена <span>300 грн</span></span>
+                    <span className="product-card__price">220 грн</span>
+                    <span className={classNames("product-card__buy", available ? 'active' : '')}>
+                        <span href="" className="product-card__btn">Купить</span>
+                        <span href="" className="product-card__unavailable">Нет в наличии</span>
+                    </span>
                 </span>
-            </span>
-        </a>
+            </a>         
     )
+}
+
+ProductCard.propTypes = {
+    name : PropTypes.string.isRequired,
+    available : PropTypes.number    
 }
 
 export default ProductCard;

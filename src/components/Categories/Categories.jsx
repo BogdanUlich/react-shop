@@ -17,7 +17,7 @@ function Categories({ name, onClick }) {
                     </a>
                 ))}
             </div>
-        </section>
+        </section> 
     )
 }
 

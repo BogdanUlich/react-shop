@@ -2,12 +2,13 @@ import React from 'react';
 import Slider from '../../components/Slider/Slider';
 import banner from'../../assets/img/banners/banner.jpg'
 import banner2 from'../../assets/img/banners/banner2.jpg'
-import Button  from '../Buttons/Button';
-import Categories from '../Categories/Categories';
-import ProductCard from '../Product-card/Product-card';
+import Button  from '../../components/Buttons/Button';
+import Categories from '../../components/Categories/Categories';
+import ProductCard from '../../components/Product-card/Product-card';
 
 
-function Main() {
+function Main({ items }) {
+
     return(
         <div>
             <section className="intro">
@@ -39,10 +40,9 @@ function Main() {
                 <section className="popular-products">
                     <h2 className="main-title">Популярные товары</h2>
                     <div className="popular-products__container container">
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard />
-                        <ProductCard /> 
+                        {
+                            items.map(obj => <ProductCard key={obj.id} {...obj}/>)
+                        }
                     </div>
                 </section>
         </div>

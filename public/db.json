@@ -1,0 +1,36 @@
+{
+    "disposablePods" : [
+        {
+            "available" : 1,
+            "id" : 1,
+            "imageUrl" : "https://d2j6dbq0eux0bg.cloudfront.net/images/44274057/2800603146.jpg",
+            "name" : "Elf Bar 2000 SSSSSSS Disposable Pod Device",
+            "oldPrice" : 300,
+            "actualPrice" : 260
+        },
+        {
+            "available" : 0,
+            "id" : 2,
+            "imageUrl" : "https://d2j6dbq0eux0bg.cloudfront.net/images/44274057/2800603146.jpg",
+            "name" : "Elf Bar 2000 Banana Cocos Disposable Pod Device",
+            "oldPrice" : 400,
+            "actualPrice" : 240
+        },
+        {
+            "available" : 1,
+            "id" : 3,
+            "imageUrl" : "https://d2j6dbq0eux0bg.cloudfront.net/images/44274057/2800603146.jpg",
+            "name" : "Elf Bar 2000 Banana Milk Disposable Pod Device",
+            "oldPrice" : 500,
+            "actualPrice" : 280
+        },
+        {
+            "available" : 0,
+            "id" : 4,
+            "imageUrl" : "https://d2j6dbq0eux0bg.cloudfront.net/images/44274057/2800603146.jpg",
+            "name" : "Elf Bar 2000 Jajaja Disposable Pod Device",
+            "oldPrice" : 600,
+            "actualPrice" : 280
+        }
+    ]
+}

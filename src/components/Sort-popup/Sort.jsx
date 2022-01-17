@@ -31,7 +31,7 @@ function Sort({ items }) {
 
     return(
         <div className="sort" ref={sortRef}>
-            <div className="sort__label" onClick={toggleVisiblePopup}><FontAwesomeIcon className="sort__icon" icon={faSortDown} />Сортировка по:<span>популярности</span></div>
+            <div className="sort__label" onClick={toggleVisiblePopup}><FontAwesomeIcon className={classNames("sort__icon", visiblePopup ? 'open' : '' )} icon={faSortDown} />Сортировка по:<span>{items[activeItem]}</span></div>
             {visiblePopup && 
             <ul className="sort__popup">
                 {items &&
@@ -40,7 +40,7 @@ function Sort({ items }) {
                         key={`${name}_${index}`} onClick={() => onSelectItem(index)}>
                         {name}
                     </li>
-            ))}
+                ))}
             </ul>
             }
         </div>
