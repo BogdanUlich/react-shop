@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './style.scss';
 import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom'
+import { createStore } from 'redux'
 
 ReactDOM.render(
   <React.StrictMode>
