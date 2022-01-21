@@ -32,10 +32,8 @@ function Main({ items }) {
                         </Slider>    
                     </div>
                 </section>             
-
-                <Categories name={['Elf bar 800','Elf bar 1500','Elf bar 2000']}
-                            onClick={(name) => console.log(name)}
-                />
+                
+                <Categories name={['Elf bar 800','Elf bar 1500','Elf bar 2000']}/>
 
                 <section className="popular-products">
                     <h2 className="main-title">Популярные товары</h2>

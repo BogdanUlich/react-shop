@@ -49,4 +49,13 @@
 } //category
 .category-page {
   padding: 70px 0 40px;
+  &__header {
+    padding: 20px 0;
+  }
+  &__body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 40px 0;
+  }
 }
