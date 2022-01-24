@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import axios from 'axios';
 import { Header } from './components';
 import { Cart, CategoryPage, Main, ProductPage } from './pages';
+import store from './redux/store';
 
 
 function App() {

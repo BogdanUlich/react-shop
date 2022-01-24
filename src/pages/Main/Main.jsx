@@ -2,12 +2,18 @@ import React from 'react';
 import Slider from '../../components/Slider/Slider';
 import banner from'../../assets/img/banners/banner.jpg'
 import banner2 from'../../assets/img/banners/banner2.jpg'
-import Button  from '../../components/Buttons/Button';
 import Categories from '../../components/Categories/Categories';
 import ProductCard from '../../components/Product-card/Product-card';
+import { useRef } from 'react/cjs/react.development';
 
 
 function Main({ items }) {
+
+    const categoriesRef = useRef(null) 
+
+    const executeScroll = () => {
+        categoriesRef.current.scrollIntoView({ behavior: 'smooth'})
+    } 
 
     return(
         <div>
@@ -16,7 +22,7 @@ function Main({ items }) {
                         <div className="intro__info">
                             <h1 className="intro__title">EMPIRE POD</h1>
                             <p className="intro__text">Официальный интернет-магазин одноразовых электронных сигарет, Elf Bar, HQD, BANG, оригинальная продукция, большой ассортимент</p>
-                            <Button className="intro__btn">Каталог</Button>
+                            <button onClick={() => executeScroll()} className="intro__btn btn-black">Каталог</button>
                         </div>
                         <Slider infinite>
                             <Slider.Page>
@@ -33,7 +39,7 @@ function Main({ items }) {
                     </div>
                 </section>             
                 
-                <Categories name={['Elf bar 800','Elf bar 1500','Elf bar 2000']}/>
+                <Categories name={['Elf bar 800','Elf bar 1500','Elf bar 2000']} categoriesRef={categoriesRef}/>
 
                 <section className="popular-products">
                     <h2 className="main-title">Популярные товары</h2>

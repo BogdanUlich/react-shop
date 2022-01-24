@@ -187,3 +187,17 @@
     }
   }
 }
+
+.scroll-top {
+  position: fixed;
+  bottom: -60px;
+  right: 20px;
+  font-size: 44px;
+  cursor: pointer;
+  color: $brand-black;
+  z-index: 50;
+  transition: all 0.2s linear;
+  &.active {
+    bottom: 20px;
+  }
+}

@@ -11,14 +11,18 @@
       grid-template-columns: repeat(2, 1fr);
     }
   }
+  @media (max-width: 768px) {
+    padding: 20px 0;
+  }
 } //categories
 .category {
   position: relative;
   border-radius: 8px;
   overflow: hidden;
-  padding: 15px 0;
+  padding: 40px 0;
   border: 1px solid $brand-gray;
   transition: 0.2s;
+  background: #fff;
   &__img {
     width: 100%;
   }
@@ -34,7 +38,7 @@
   }
   &__label {
     position: absolute;
-    top: 10px;
+    top: 5px;
     right: 5px;
     font-size: 19px;
     border-radius: 20px;

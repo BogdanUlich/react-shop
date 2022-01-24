@@ -14,7 +14,7 @@ function ProductCard({ available, name }) {
                     <span className="product-card__discount">Старая цена <span>300 грн</span></span>
                     <span className="product-card__price">220 грн</span>
                     <span className={classNames("product-card__buy", available ? 'active' : '')}>
-                        <span href="" className="product-card__btn">Купить</span>
+                        <span href="" className="product-card__btn">В корзину</span>
                         <span href="" className="product-card__unavailable">Нет в наличии</span>
                     </span>
                 </span>

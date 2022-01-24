@@ -31,14 +31,14 @@ function Sort({ items }) {
 
     return(
         <div className="sort" ref={sortRef}>
-            <div className="sort__label" onClick={toggleVisiblePopup}><FontAwesomeIcon className={classNames("sort__icon", visiblePopup ? 'open' : '' )} icon={faSortDown} />Сортировка по:<span>{items[activeItem]}</span></div>
+            <div className="sort__label" onClick={toggleVisiblePopup}><FontAwesomeIcon className={classNames("sort__icon", visiblePopup ? 'open' : '' )} icon={faSortDown} />Сортировка по:<span>{items[activeItem].name}</span></div>
             {visiblePopup && 
             <ul className="sort__popup">
                 {items &&
-                    items.map(( name, index ) => (
+                    items.map((obj, index ) => (
                     <li className={classNames("sort__link" , activeItem === index ? 'active' : '')} 
-                        key={`${name}_${index}`} onClick={() => onSelectItem(index)}>
-                        {name}
+                        key={`${obj.type}_${index}`} onClick={() => onSelectItem(index)}>
+                        {obj.name}
                     </li>
                 ))}
             </ul>
