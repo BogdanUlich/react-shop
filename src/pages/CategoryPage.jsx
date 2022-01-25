@@ -1,6 +1,7 @@
 import React from 'react';
 import Sort from '../components/Sort-popup/Sort';
 import ProductCard from '../components/Product-card/Product-card';
+import { Link } from 'react-router-dom';
 
 function CategoryPage({ items }) {
     return(
@@ -9,8 +10,8 @@ function CategoryPage({ items }) {
 
                 <div className="category-page__header space-between">
                     <nav className="breadcrumbs">
-                        <a href="" className="breadcrumb">Главная /</a>
-                        <a href="" className="breadcrumb">Elfbar 1500</a>
+                        <Link to="/" className="breadcrumb">Главная /</Link>
+                        <span className="breadcrumb">Elfbar 1500</span>
                     </nav>
                     <Sort items={[{name: 'популярности', type: 'popular'}, {name: 'цене', type: 'price'}, {name: 'алфавиту', type: 'alphabet'}]}/>
                 </div>
