@@ -4,6 +4,8 @@ import axios from 'axios';
 import { Header } from './components';
 import { Cart, CategoryPage, Main, ProductPage } from './pages';
 import store from './redux/store';
+import { setProducts } from './redux/actions/product';
+import { connect } from 'react-redux';
 
 
 function App() {
@@ -33,7 +35,7 @@ function App() {
         )
     }
 
-export default App;
+export default connect()(App);
 
 
 
