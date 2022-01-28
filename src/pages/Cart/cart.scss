@@ -1,8 +1,15 @@
 .cart {
+  padding: 100px 0 40px;
   &__container {
     display: flex;
     gap: 30px;
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
   }
+}
+.breadcrumbs {
+  padding-bottom: 10px;
 }
 .product-cart {
   flex: 0 0 30%;
@@ -19,6 +26,9 @@
   &__total {
     font-size: 20px;
     font-weight: 600;
+  }
+  @media (max-width: 992px) {
+    flex: 0 0 285px;
   }
 }
 .cart-product {
@@ -40,6 +50,12 @@
   }
   &__amount {
     gap: 20px;
+    width: 100%;
+  }
+  &__delete {
+    align-self: flex-start;
+    font-size: 16px;
+    cursor: pointer;
   }
 }
 .product-ordering {
@@ -85,5 +101,13 @@
   }
   &__switch-btn {
     margin: 0;
+  }
+  &__textarea {
+    border: 1px solid $border-gray;
+    border-radius: 6px;
+    resize: none;
+    width: 100%;
+    height: 150px;
+    overflow: auto;
   }
 }

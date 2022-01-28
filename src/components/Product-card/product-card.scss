@@ -35,6 +35,7 @@
     font-size: 18px;
   }
   &__buy {
+    cursor: pointer;
     .product-card__btn {
       display: none;
     }

@@ -25,6 +25,7 @@ function App() {
                 <Route exact path="/" element={<Main items={disposablePods}/>}/>
                 <Route exact path="/cart" element={<Cart />}/>
                 <Route exact path="/category-page" element={<CategoryPage items={disposablePods}/>}/>
+                <Route path="/product-page/:id" element={<ProductPage items={disposablePods}/>}/>
             </Routes>
                 
             {/* <CategoryPage /> */}

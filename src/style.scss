@@ -7,15 +7,15 @@ $border-gray: #afafaf;
 $card-background: #f1f1f1;
 $label-success: #24e945;
 
-@import "./components/Header/header.scss";
-@import "./components/Slider/slider.scss";
-@import "./components/Buttons/button.scss";
-@import "./components/Product-card/product-card.scss";
-@import "./components/Categories/categories.scss";
-@import "./pages/Main/main.scss";
-@import "./pages/Product-page/product-page.scss";
-@import "./pages/Cart/cart.scss";
-@import "./components/Sort-popup/sort.scss";
+@import './components/Header/header.scss';
+@import './components/Slider/slider.scss';
+@import './components/Buttons/button.scss';
+@import './components/Product-card/product-card.scss';
+@import './components/Categories/categories.scss';
+@import './pages/Main/main.scss';
+@import './pages/Product-page/product-page.scss';
+@import './pages/Cart/cart.scss';
+@import './components/Sort-popup/sort.scss';
 
 html {
   width: 100%;
@@ -63,4 +63,15 @@ ul {
 .title {
   font-size: 28px;
   font-weight: 600;
+}
+
+.breadcrumbs {
+  display: flex;
+  gap: 5px;
+  .breadcrumb {
+    cursor: pointer;
+    &:last-child {
+      color: $brand-warning;
+    }
+  }
 }
