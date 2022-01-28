@@ -1,15 +1,17 @@
 .header {
-  background: #f8f8f8;
-  position: absolute;
+  background: #fff;
+  position: fixed;
+  padding: 10px 0;
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 100;
+  box-shadow: 0 3px 5px -2px $brand-gray;
   &__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    height: 60px;
   }
   &__menu {
     display: none;
@@ -60,29 +62,30 @@
     display: flex;
     width: 100%;
     max-width: 500px;
+    border-radius: 25px;
+    overflow: hidden;
     &-input {
+      background: #f1f3f5;
       padding: 0 15px;
       height: 35px;
-      border: 1px solid $text-gray;
-      border-radius: 0;
-      border-top-left-radius: 6px;
-      border-bottom-left-radius: 6px;
       width: 100%;
       outline: 0;
+      border: 0;
+      &::placeholder {
+        color: $text-gray;
+        font-size: 14px;
+      }
     }
     &-btn {
+      border: 0;
+      padding-right: 15px;
+      background: #f1f3f5;
       cursor: pointer;
-      color: #fff;
-      width: 60px;
-      background-color: $text-gray;
-      border: 1px solid $text-gray;
-      border-radius: 0;
-      border-top-right-radius: 6px;
-      border-bottom-right-radius: 6px;
+      color: $text-gray;
+      font-size: 18px;
       transition: all 0.2s linear;
       &:hover {
-        background-color: $brand-black;
-        border: 1px solid $brand-black;
+        color: $brand-black;
       }
     }
     @media (max-width: 768px) {
@@ -116,6 +119,7 @@
   &__numbers {
     position: relative;
     &-list {
+      display: none;
       background: #fff;
       z-index: 2;
       border-radius: 8px;
@@ -123,10 +127,12 @@
       position: absolute;
       top: 30px;
       left: -19px;
-      display: flex;
       flex-direction: column;
       align-items: center;
       overflow: hidden;
+      &.open {
+        display: flex;
+      }
       a {
         padding: 6px 20px;
         white-space: nowrap;
@@ -194,9 +200,19 @@
   right: 20px;
   font-size: 44px;
   cursor: pointer;
-  color: $brand-black;
+  color: lighten($brand-black, 20%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  background: #fff;
+  border-radius: 50%;
   z-index: 50;
   transition: all 0.2s linear;
+  &:hover {
+    color: $brand-black;
+  }
   &.active {
     bottom: 20px;
   }

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import category from '../../assets/img/category/category.jpg'
 
 function Categories({ name, onClick, categoriesRef }) {
  
@@ -10,7 +9,7 @@ function Categories({ name, onClick, categoriesRef }) {
             <div className="categories__container container">
                 {name.map((name, index)  => (
                     <Link to="/category-page" className="category" key={`${name}_${index}`} onClick={() => onClick(name)}>
-                        <img className="category__img" src={category} alt="" />
+                        <img className="category__img" src="https://vapers-dreams.ru/image/cache/catalog/odnorazovye/odnorazovye-e-sigarety-pump-strawberry-1000x1000.png" alt="" />
                         <div className="category__name">{name}</div>
                         <div className="category__label">Нет в наличии</div>
                     </Link>

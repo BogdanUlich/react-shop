@@ -22,7 +22,6 @@
   padding: 40px 0;
   border: 1px solid $brand-gray;
   transition: 0.2s;
-  background: #fff;
   &__img {
     width: 100%;
   }
@@ -41,14 +40,14 @@
     top: 5px;
     right: 5px;
     font-size: 19px;
-    border-radius: 20px;
+    border-radius: 25px;
     color: #fff;
     background: $brand-warning;
     padding: 10px 20px;
   }
   &:hover {
-    box-shadow: 0px 0px 3px 2px $brand-gray;
-    transform: scale(1.01);
+    box-shadow: 0px 0px 6px 3px $brand-gray;
+    background: #fff;
   }
 } //category
 .category-page {

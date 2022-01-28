@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart, faSortDown, faArrowCircleUp } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart, faSortDown, faArrowCircleUp, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { faTelegram, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { useEffect, useState } from 'react/cjs/react.development';
 import classNames from 'classnames';
@@ -12,24 +12,10 @@ function Header({ numbers }) {
     const [visiblePopup, setVisiblePopup] = useState(false)
 
     const numRef = useRef()
-    const scrollTopRef = useRef()
-    const headerRef = useRef()
        
     useEffect(() => {
         document.body.addEventListener('click', closePopup)
     }, []) 
-
-    useEffect(() => {
-        window.addEventListener('scroll', showScrollTopArrow)
-    }, []) 
-
-    const showScrollTopArrow = () => {
-        if(document.documentElement.scrollTop > 300){
-            scrollTopRef.current.classList.add('active')
-        }else{
-            scrollTopRef.current.classList.remove('active')
-        }
-    }
 
     const toggleVisiblePopup = () => {
         setVisiblePopup(!visiblePopup)
@@ -40,13 +26,31 @@ function Header({ numbers }) {
             setVisiblePopup(false)
         }
     }
+    
+
+    const [showScrollTop, setShowScrollTop] = useState(false)
+
+    const scrollTopRef = useRef()
+
+    useEffect(() => {
+        window.addEventListener('scroll', showScrollTopArrow)
+    }, []) 
+
+    const showScrollTopArrow = () => {
+        if(!showScrollTop && window.pageYOffset > 300){
+            setShowScrollTop(true)
+        }else{
+            setShowScrollTop(false)
+        }
+    }
 
     const scrollTop = () => {
-        headerRef.current.scrollIntoView({ behavior: 'smooth'})
+        window.scrollTo({top:0, behavior: 'smooth'})
     }
+
     return (
     <div>    
-        <header className="header" ref={headerRef}>
+        <header className="header">
             <div className="header__container container">
                 <button className="header__menu">
                 <div className="header__menu-burger">
@@ -57,17 +61,18 @@ function Header({ numbers }) {
                 <Link to="/" className="header__logo">Logo</Link>
                 <div className="header__search">
                     <input type="text" className="header__search-input" placeholder='Я ищу...'/>
-                    <button className="header__search-btn">Поиск</button>
+                    <button className="header__search-btn"><FontAwesomeIcon icon={faSearch} /></button>
                 </div>
                 <div className="header__contacts">
                     <a href="" className="header__contacts-link"><FontAwesomeIcon className="header__contacts-icon" icon={faTelegram} /></a>
                     <a href="" className="header__contacts-link"><FontAwesomeIcon className="header__contacts-icon" icon={faInstagram} /></a>
                     <div className="header__numbers">
-                        <a href="#" className="header__number header__number_label" onClick={toggleVisiblePopup} ref={numRef}>{numbers[0]}<FontAwesomeIcon className={classNames("header__number-icon", visiblePopup ? 'open' : '')}  icon={faSortDown} /></a>
-                        <div className="header__numbers-list">
-                            {visiblePopup &&
-                                numbers.map((num, index) => (
-                                    <a href={`tel:${num}`} className="header__number" key={`${num}_${index}`}>{num}</a>
+                        <a href="#" className="header__number header__number_label" onClick={toggleVisiblePopup} ref={numRef}>
+                            {numbers[0]}<FontAwesomeIcon className={classNames("header__number-icon", visiblePopup ? 'open' : '')}  icon={faSortDown} />
+                        </a>
+                        <div className={classNames("header__numbers-list", visiblePopup ? 'open' : '')}>
+                            {numbers.map((num, index) => (
+                                <a href={`tel:${num}`} className="header__number" key={`${num}_${index}`}>{num}</a>
                             ))}
                         </div>
                     </div>
@@ -79,7 +84,7 @@ function Header({ numbers }) {
             </div>
         </header>
 
-        <div className="scroll-top" onClick={() => scrollTop()} ref={scrollTopRef}>
+        <div className={classNames("scroll-top", showScrollTop ? 'active' : '')} onClick={() => scrollTop()} ref={scrollTopRef}>
             <FontAwesomeIcon icon={faArrowCircleUp} />
         </div>
     </div>
