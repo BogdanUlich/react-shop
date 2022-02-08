@@ -8,6 +8,7 @@ function CategoryPage() {
 
     const items = useSelector(({ products }) => products.items )
     const category = useSelector(({ categories }) => categories.category)
+    const sortBy = useSelector(({ filters }) => filters.sortBy)
 
     const dispatch = useDispatch()
 
@@ -15,12 +16,14 @@ function CategoryPage() {
         dispatch(fetchProducts(category))
     }, [])
 
+    const sortItems = [{name: 'популярности', type: 'popular'}, {name: 'цене', type: 'price'}, {name: 'алфавиту', type: 'alphabet'}]
+
     return(
         <div className="container">
             <div className="category-page">
 
                 <div className="category-page__header">
-                    <Sort items={[{name: 'популярности', type: 'popular'}, {name: 'цене', type: 'price'}, {name: 'алфавиту', type: 'alphabet'}]}/>
+                    <Sort sortItems={sortItems} activeSortType={sortBy} onClickSortType={}/>
                 </div>
 
                 <div className="category-page__body">
