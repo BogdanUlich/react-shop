@@ -6,7 +6,9 @@
             "imageUrl" : "https://d2j6dbq0eux0bg.cloudfront.net/images/44274057/2800603146.jpg",
             "name" : "Elf Bar 2000 SSSSSSS Disposable Pod Device",
             "oldPrice" : 300,
-            "actualPrice" : 260
+            "actualPrice" : 260,
+            "category" : "elfbar1500",
+            "rating" : 5
         },
         {
             "available" : 0,
@@ -14,7 +16,9 @@
             "imageUrl" : "https://d2j6dbq0eux0bg.cloudfront.net/images/44274057/2800603146.jpg",
             "name" : "Elf Bar 2000 Banana Cocos Disposable Pod Device",
             "oldPrice" : 400,
-            "actualPrice" : 240
+            "actualPrice" : 240,
+            "category" : "elfbar1500",
+            "rating" : 5
         },
         {
             "available" : 1,
@@ -22,7 +26,9 @@
             "imageUrl" : "https://d2j6dbq0eux0bg.cloudfront.net/images/44274057/2800603146.jpg",
             "name" : "Elf Bar 2000 Banana Milk Disposable Pod Device",
             "oldPrice" : 500,
-            "actualPrice" : 280
+            "actualPrice" : 280,
+            "category" : "elfbar2000",
+            "rating" : 4
         },
         {
             "available" : 0,
@@ -30,7 +36,32 @@
             "imageUrl" : "https://d2j6dbq0eux0bg.cloudfront.net/images/44274057/2800603146.jpg",
             "name" : "Elf Bar 2000 Jajaja Disposable Pod Device",
             "oldPrice" : 600,
-            "actualPrice" : 280
+            "actualPrice" : 280,
+            "category" : "elfbar2000",
+            "rating" : 5
+        }
+    ],
+    "categories" : [
+        {
+            "available" : 0,
+            "id" : 1,
+            "imageUrl" : "https://d2j6dbq0eux0bg.cloudfront.net/images/44274057/2800603146.jpg",
+            "name" : "Elf Bar 800",
+            "category" : "elfbar800"
+        },
+        {
+            "available" : 1,
+            "id" : 2,
+            "imageUrl" : "https://d2j6dbq0eux0bg.cloudfront.net/images/44274057/2800603146.jpg",
+            "name" : "Elf Bar 1500",
+            "category" : "elfbar1500"
+        },
+        {
+            "available" : 1,
+            "id" : 3,
+            "imageUrl" : "https://d2j6dbq0eux0bg.cloudfront.net/images/44274057/2800603146.jpg",
+            "name" : "Elf Bar 2000",
+            "category" : "elfbar2000"
         }
     ]
 }

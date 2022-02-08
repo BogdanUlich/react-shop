@@ -59,35 +59,6 @@
     font-size: 23px;
   }
   &__search {
-    display: flex;
-    width: 100%;
-    max-width: 500px;
-    border-radius: 25px;
-    overflow: hidden;
-    &-input {
-      background: #f1f3f5;
-      padding: 0 15px;
-      height: 35px;
-      width: 100%;
-      outline: 0;
-      border: 0;
-      &::placeholder {
-        color: $text-gray;
-        font-size: 14px;
-      }
-    }
-    &-btn {
-      border: 0;
-      padding-right: 15px;
-      background: #f1f3f5;
-      cursor: pointer;
-      color: $text-gray;
-      font-size: 18px;
-      transition: all 0.2s linear;
-      &:hover {
-        color: $brand-black;
-      }
-    }
     @media (max-width: 768px) {
       display: none;
     }
@@ -148,6 +119,7 @@
     align-items: center;
     gap: 7px;
     &_label {
+      cursor: pointer;
       &:hover {
         color: $brand-warning;
       }

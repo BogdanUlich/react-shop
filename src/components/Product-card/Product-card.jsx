@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 function ProductCard({ available, name, id }) {
 
     return(
-            <div className="product-card">
+        <div className="product-card">
             <Link to={"/product-page/" + id} className="product-card__img"><img src={product} alt=""/></Link>
             <span className="product-card__description">
                 <Link to={"/product-page/" + id} className="product-card__name">{name}</Link>
@@ -19,7 +19,7 @@ function ProductCard({ available, name, id }) {
                     <span href="" className="product-card__unavailable">Нет в наличии</span>
                 </span>
             </span>
-        </div>                  
+        </div>     
     )
 }
 

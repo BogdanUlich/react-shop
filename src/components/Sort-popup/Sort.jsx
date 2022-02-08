@@ -4,34 +4,34 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from "react/cjs/react.development"
 import classNames from "classnames";
 
-function Sort({ items }) {
+const Sort = React.memo( function({ items }) {
 
     const [visiblePopup, setVisiblePopup] = useState(false)
-    const [activeItem, setActiveItem] = useState(0)
 
     const sortRef = useRef()
 
     const onSelectItem = (index) => {
         setActiveItem(index)
+        setVisiblePopup(false)
     }
+    
+    useEffect(() => {
+        document.body.addEventListener('click', closePopup)
+    }, []) 
 
-    const handleOutsideClick = (e) => {
+    const closePopup = (e) => {
         if(!e.path.includes(sortRef.current)){
             setVisiblePopup(false)
         }
     }
-    
-    useEffect(() => {
-        document.body.addEventListener('click', handleOutsideClick)
-    }, []) 
 
     const toggleVisiblePopup = () => {
         setVisiblePopup(!visiblePopup)
     }
 
     return(
-        <div className="sort" ref={sortRef}>
-            <div className="sort__label" onClick={toggleVisiblePopup}><FontAwesomeIcon className={classNames("sort__icon", visiblePopup ? 'open' : '' )} icon={faSortDown} />Сортировка по:<span>{items[activeItem].name}</span></div>
+        <div className="sort">
+            <div className="sort__label" ref={sortRef} onClick={toggleVisiblePopup}><FontAwesomeIcon className={classNames("sort__icon", visiblePopup ? 'open' : '' )} icon={faSortDown} />Сортировка по:<span>{items[activeItem].name}</span></div>
             {visiblePopup && 
             <ul className="sort__popup">
                 {items &&
@@ -45,6 +45,6 @@ function Sort({ items }) {
             }
         </div>
     )
-}
+})
 
 export default Sort
