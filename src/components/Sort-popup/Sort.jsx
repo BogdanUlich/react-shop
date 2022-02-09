@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 
 const Sort = React.memo( function SortPopup({ sortItems, activeSortType }) {
 
-    const activelabel = sortItems.find(obj => obj.type === activeSortType).name
+    const activelabel = sortItems.find(obj => obj.type === activeSortType.type).name
 
     const [visiblePopup, setVisiblePopup] = useState(false)
 
@@ -42,8 +42,8 @@ const Sort = React.memo( function SortPopup({ sortItems, activeSortType }) {
             <ul className="sort__popup">
                 {sortItems &&
                     sortItems.map( obj => (
-                    <li className={classNames("sort__link" , activeSortType === obj.type ? 'active' : '')} 
-                        key={`${obj.type}`} onClick={() => onSelectItem(obj.type)}>
+                    <li className={classNames("sort__link" , activeSortType.type === obj.type ? 'active' : '')} 
+                        key={`${obj.type}`} onClick={() => onSelectItem(obj)}>
                         {obj.name}
                     </li>
                 ))}

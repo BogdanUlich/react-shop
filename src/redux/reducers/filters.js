@@ -1,5 +1,8 @@
 const initialState = {
-    sortBy : 'rating'
+    sortBy : {
+        type: 'rating',
+        order: 'desc'
+    }
 }
 
 const filters = (state = initialState, action) => {

@@ -5,6 +5,7 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     gap: 5px;
     span {
       color: $brand-warning;
