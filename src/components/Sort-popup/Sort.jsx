@@ -3,8 +3,10 @@ import { faSortDown} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from "react/cjs/react.development"
 import classNames from "classnames";
+import { setSortBy } from "../../redux/actions/filters";
+import { useDispatch } from "react-redux";
 
-const Sort = React.memo( function SortPopup({ sortItems, activeSortType, onClickSortType }) {
+const Sort = React.memo( function SortPopup({ sortItems, activeSortType }) {
 
     const activelabel = sortItems.find(obj => obj.type === activeSortType).name
 
@@ -12,8 +14,10 @@ const Sort = React.memo( function SortPopup({ sortItems, activeSortType, onClick
 
     const sortRef = useRef()
 
-    const onSelectItem = (index) => {
-        onClickSortType(index)
+    const dispatch = useDispatch()
+
+    const onSelectItem = (type) => {
+        dispatch(setSortBy(type))
         setVisiblePopup(false)
     }
     
@@ -37,9 +41,9 @@ const Sort = React.memo( function SortPopup({ sortItems, activeSortType, onClick
             {visiblePopup && 
             <ul className="sort__popup">
                 {sortItems &&
-                    sortItems.map((obj, index ) => (
-                    <li className={classNames("sort__link" , activeSortType === index ? 'active' : '')} 
-                        key={`${obj.type}_${index}`} onClick={() => onSelectItem(index)}>
+                    sortItems.map( obj => (
+                    <li className={classNames("sort__link" , activeSortType === obj.type ? 'active' : '')} 
+                        key={`${obj.type}`} onClick={() => onSelectItem(obj.type)}>
                         {obj.name}
                     </li>
                 ))}

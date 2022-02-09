@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const fetchProducts = (category, sortBy) => (dispatch) => {
     dispatch(setLoaded(false))
-    axios.get(`http://localhost:3001/disposablePods?category=${category}`).then( ({ data }) => {
+    axios.get(`http://localhost:3001/disposablePods?category=${category}&_sort=${sortBy}&_order=asc`).then( ({ data }) => {
             dispatch(setProducts(data))
      })
 }

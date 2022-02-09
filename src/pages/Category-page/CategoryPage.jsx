@@ -13,17 +13,17 @@ function CategoryPage() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(fetchProducts(category))
-    }, [])
+        dispatch(fetchProducts(category, sortBy))
+    }, [sortBy])
 
-    const sortItems = [{name: 'популярности', type: 'popular'}, {name: 'цене', type: 'price'}, {name: 'алфавиту', type: 'alphabet'}]
+    const sortItems = [{name: 'популярности', type: 'rating'}, {name: 'цене', type: 'actualPrice'}, {name: 'алфавиту', type: 'name'}]
 
     return(
         <div className="container">
             <div className="category-page">
 
                 <div className="category-page__header">
-                    <Sort sortItems={sortItems} activeSortType={sortBy} onClickSortType={}/>
+                    <Sort sortItems={sortItems} activeSortType={sortBy} />
                 </div>
 
                 <div className="category-page__body">

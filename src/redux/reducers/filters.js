@@ -1,5 +1,5 @@
 const initialState = {
-    sortBy : 'popular'
+    sortBy : 'rating'
 }
 
 const filters = (state = initialState, action) => {
