@@ -24,8 +24,9 @@ function Header({ numbers }) {
         setVisiblePopup(!visiblePopup)
     }
 
-    const closePopup = (e) => {
-        if(!e.path.includes(numRef.current)){
+    const closePopup = (event) => {
+        const path = event.path || (event.composedPath && event.composedPath())
+        if(!path.includes(numRef.current)){
             setVisiblePopup(false)
         }
     }

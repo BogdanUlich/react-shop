@@ -9,7 +9,7 @@ export const fetchProducts = (category, sortBy) => (dispatch) => {
 
 export const fetchPopularProducts = () => (dispatch) => {
     dispatch(setLoaded(false))
-    axios.get('http://localhost:3001/disposablePods?rating=5').then( ({ data }) => {
+    axios.get('http://localhost:3001/disposablePods?rating=5&available=1').then( ({ data }) => {
             dispatch(setProducts(data))
      })
 }

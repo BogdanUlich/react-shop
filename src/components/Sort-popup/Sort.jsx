@@ -25,8 +25,9 @@ const Sort = React.memo( function SortPopup({ sortItems, activeSortType }) {
         document.body.addEventListener('click', closePopup)
     }, []) 
 
-    const closePopup = (e) => {
-        if(!e.path.includes(sortRef.current)){
+    const closePopup = (event) => {
+        const path = event.path || (event.composedPath && event.composedPath())
+        if(!path.includes(sortRef.current)){
             setVisiblePopup(false)
         }
     }

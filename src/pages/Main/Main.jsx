@@ -28,7 +28,7 @@ function Main() {
     }
     
     return(
-        <div>
+        <div className='main'>
             <section className="intro">
                     <div className="intro__container container">
                         <div className="intro__info">

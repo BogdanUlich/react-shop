@@ -1,5 +1,5 @@
 .cart {
-  padding: 100px 0 40px;
+  padding: 100px 0 208px;
   &__container {
     display: flex;
     gap: 30px;
@@ -14,7 +14,7 @@
     }
   }
   @media (max-width: 576px) {
-    padding: 75px 0 30px;
+    padding: 75px 0 208px;
   }
 }
 .product-cart {

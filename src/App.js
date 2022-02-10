@@ -15,7 +15,7 @@ function App() {
     })
 
     return (
-        <div className="">
+        <div className="wrapper">
             <Header numbers={['+380 (50) 300 00 00', '+380 (50) 200 00 00','+380 (50) 200 00 00','+380 (50) 200 00 00']}/>
             <Routes>
                 <Route exact path="/" element={<Main />}/>
