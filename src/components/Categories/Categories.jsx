@@ -9,7 +9,7 @@ function Categories({ categoriesRef }) {
         dispatch(fetchCategory())
     }, [])
 
-    const categories = useSelector(({ categories }) => categories.items)
+    const categories = useSelector(({ category }) => category.items)
 
     const dispatch = useDispatch()
 

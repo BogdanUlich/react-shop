@@ -1,16 +1,16 @@
 import { combineReducers } from 'redux'
-import productsReduser from './products'
-import filtersReduser from './filters'
-import leftMenuReduser from './leftMenu'
-import categoryReduser from './category'
-import cartReduser from './cart'
+import products from './products'
+import filters from './filters'
+import leftMenu from './leftMenu'
+import category from './category'
+import cart from './cart'
 
 const rootReducer = combineReducers({
-    products: productsReduser,
-    filters: filtersReduser,
-    leftMenu : leftMenuReduser,
-    categories: categoryReduser,
-    cart: cartReduser
+    products,
+    filters,
+    leftMenu,
+    category,
+    cart,
 })
 
 export default rootReducer

@@ -8,7 +8,7 @@ import { LoadingPreview } from '../../components';
 function CategoryPage() {
 
     const items = useSelector(({ products }) => products.items )
-    const category = useSelector(({ categories }) => categories.category)
+    const category = useSelector(({ category }) => category.category)
     const sortBy = useSelector(({ filters }) => filters.sortBy)
     const isLoaded = useSelector(({ products }) => products.isLoaded )
 

@@ -1,10 +1,5 @@
-export const setTotalPrice = (items) => ({
-    type: 'SET_TOTAL_PRICE',
-    payload: items,
-})
-
-export const setTotalCount = (category) => ({
-    type: 'SET_TOTAL_COUNT',
-    payload: category,
+export const addItemToCart = (obj) => ({
+    type: 'ADD_ITEM_TO_CART',
+    payload: obj,
 })
 

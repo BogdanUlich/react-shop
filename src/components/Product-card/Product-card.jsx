@@ -3,9 +3,23 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import product from '../../assets/img/blueberry.png'
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addItemToCart } from '../../redux/actions/cart';
 
 
-function ProductCard({ available, name, actualPrice, oldPrice }) {
+function ProductCard({ available, name, actualPrice, oldPrice, id, imageUrl}) {
+
+    const dispatch = useDispatch()
+
+    const onAddToCart = () => {
+        const obj = {
+            id,
+            name,
+            imageUrl,
+            actualPrice
+        }
+        dispatch(addItemToCart(obj))
+    }
 
     return(
         <div className="product-card">
@@ -15,7 +29,7 @@ function ProductCard({ available, name, actualPrice, oldPrice }) {
                 <span className="product-card__discount">Старая цена <span>{oldPrice} грн</span></span>
                 <span className="product-card__price">{actualPrice} грн</span>
                 <span className={classNames("product-card__buy", available ? 'active' : '')}>
-                    <span href="" className="product-card__btn">В корзину</span>
+                    <button onClick={() => onAddToCart()} className="product-card__btn">В корзину</button>
                     <span href="" className="product-card__unavailable">Нет в наличии</span>
                 </span>
             </span>
@@ -27,7 +41,8 @@ ProductCard.propTypes = {
     name : PropTypes.string.isRequired,
     available : PropTypes.number,
     actualPrice : PropTypes.number,
-    oldPrice : PropTypes.number
+    oldPrice : PropTypes.number,
+    onAddToCart : PropTypes.func,
 }
 
 export default ProductCard;

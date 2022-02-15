@@ -58,9 +58,11 @@
     }
   }
   &__btn {
+    cursor: pointer;
     opacity: 0;
     display: block;
     border: 1px solid $brand-gray;
+    background: transparent;
     border-radius: 6px;
     padding: 5px 10px;
     font-weight: 500;

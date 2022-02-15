@@ -66,6 +66,8 @@ function Header({ numbers }) {
         document.body.style.overflow = 'auto'
     }
 
+    const totalCount = useSelector(({ cart }) => cart.totalCount)
+
     return (
     <div>    
         <header className="header">
@@ -97,7 +99,7 @@ function Header({ numbers }) {
                 </div>
                 <Link className="header__cart" to="/checkout">
                     <FontAwesomeIcon className="header__cart-icon" icon={faShoppingCart} />
-                    <div className="header__cart-amount">9</div>
+                    <div className={classNames("header__cart-amount", totalCount ? "active" : "")}>{totalCount}</div>
                 </Link>
             </div>
         </header>
