@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const fetchCategory = () => (dispatch) => {
-    axios.get('http://localhost:3001/categories').then( ({ data }) => {
+    axios.get('/categories').then( ({ data }) => {
             dispatch(setCategory(data))
     })
 }

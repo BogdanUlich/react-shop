@@ -1,9 +1,26 @@
 import React from 'react';
-import Button  from '../../components/Buttons/Button';
 import product from '../../assets/img/blueberry.png'
+import { useSelector, useDispatch } from 'react-redux';
+import { addItemToCart } from '../../redux/actions/cart';
 
 
 function ProductPage() {
+
+    const item = useSelector(({ products }) => products.items )
+    const isLoaded = useSelector(({ products }) => products.isLoaded ) 
+    const dispatch = useDispatch()
+
+    const onAddToCart = ({ id, name, imageUrl, actualPrice }) => {
+
+        const obj = {
+            id,
+            name,
+            imageUrl,
+            actualPrice,
+        }
+        dispatch(addItemToCart(obj)) 
+    }
+
     return(
         <div className="product-page">
             <div className="product-page__container container">
@@ -27,18 +44,18 @@ function ProductPage() {
                     </div>
                     <div className="product__column">
                         <div className="product__info">
-                            <h1 className="product__name">Elf Bar 2000 Pineapple Ice Disposable Pod Device</h1>
-                            <div className="product__code">Артикул 00001</div>
-                            <div className="product__price">300 грн.</div>
+                            <h1 className="product__name">{item[0].name}</h1>
+                            {/* <div className="product__code">Артикул 00001</div> */}
+                            <div className="product__price">{item[0].actualPrice} грн.</div>
                             <div className="product__discount">
-                                <div className="product__old-price">350 грн.</div>
+                                <div className="product__old-price">{item[0].oldPrice} грн.</div>
                                 <div className="product__discount-value">Скидка 14%</div>
                             </div>
                             <div className="product__label">Новинка</div>
                             <div className="product__amount">
                                 Количество: <input type="text" placeholder="1" />
                             </div>
-                            <Button className="product__btn">В корзину</Button>
+                            <button onClick={() => onAddToCart(item[0])} className="product__btn btn-black">В корзину</button>
                         </div>
                     </div>
                     <div className="product__img-md">

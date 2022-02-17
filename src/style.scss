@@ -75,6 +75,19 @@ ul {
   font-size: 28px;
   font-weight: 600;
 }
+.btn-black {
+  border: 0;
+  background: $brand-black;
+  height: 50px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 17px;
+  cursor: pointer;
+  &:hover {
+    background: lighten($brand-black, 10%);
+  }
+}
+
 .search {
   display: flex;
   width: 100%;
@@ -123,7 +136,6 @@ ul {
 
 @import './components/Header/header.scss';
 @import './components/Slider/slider.scss';
-@import './components/Buttons/button.scss';
 @import './components/Product-card/product-card.scss';
 @import './components/Categories/categories.scss';
 @import './pages/Main/main.scss';
@@ -133,3 +145,4 @@ ul {
 @import './components/Sort-popup/sort.scss';
 @import './components/Left-menu/left-menu.scss';
 @import './components/Footer/footer.scss';
+@import './components/Cart-product/cart-product.scss';

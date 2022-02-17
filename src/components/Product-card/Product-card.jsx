@@ -5,6 +5,7 @@ import product from '../../assets/img/blueberry.png'
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addItemToCart } from '../../redux/actions/cart';
+import { fetchProduct } from '../../redux/actions/product';
 
 
 function ProductCard({ available, name, actualPrice, oldPrice, id, imageUrl}) {
@@ -21,11 +22,15 @@ function ProductCard({ available, name, actualPrice, oldPrice, id, imageUrl}) {
         dispatch(addItemToCart(obj))
     }
 
+    const onGoToProductPage = (id) => {
+        dispatch(fetchProduct(id))
+    }
+
     return(
         <div className="product-card">
-            <Link to={"/product-page/" + name} className="product-card__img"><img src={product} alt=""/></Link>
+            <Link onClick={() => onGoToProductPage(id)} to={"/product-page/" + name} className="product-card__img"><img src={product} alt=""/></Link>
             <span className="product-card__description">
-                <Link to={"/product-page/" + name} className="product-card__name">{name}</Link>
+                <Link onClick={() => onGoToProductPage(id)} to={"/product-page/" + name} className="product-card__name">{name}</Link>
                 <span className="product-card__discount">Старая цена <span>{oldPrice} грн</span></span>
                 <span className="product-card__price">{actualPrice} грн</span>
                 <span className={classNames("product-card__buy", available ? 'active' : '')}>

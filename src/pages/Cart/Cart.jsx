@@ -1,15 +1,17 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux';
+import { CartProduct } from '../../components';
 
 function Cart() {
 
     const dispatch = useDispatch()
-    const cartItems = useSelector(({ cart }) => cart.items )
+    const {totalPrice, totalCount, items} = useSelector(({ cart }) => cart )
 
-    console.log(cartItems);
+    // const item = () => {
+    //     Object.keys(items).map(key => {[items[key][0], items[key].length]})
+    // }
+
+    // console.log(item[1]);
 
     return(
         <div className="container">
@@ -20,18 +22,8 @@ function Cart() {
                         <div className="product-cart__body">
                         <h2 className="product-cart__title title">Корзина</h2>
 
-                            <div className="product-cart__item cart-product">
-                                <Link to="/"><img  alt="" className="cart-product__img" /></Link>
-                                <div className="cart-product__info space-between">
-                                    <div className="cart-product__name space-between">
-                                        <Link to="/">HQD King 2000 Pina Colada 5% Disposable Pod</Link>
-                                        <span style={{alignSelf: 'flex-start'}}><FontAwesomeIcon className="cart-product__delete" icon={faTimes} /></span>
-                                    </div>
-                                    <div className="cart-product__amount space-between">
-                                        {/* <span>Количество: {cartItems[obj.id] && cartItems[obj.id].length}</span> */}
-                                        <span className="cart-product__price">240 грн</span>
-                                    </div>
-                                </div>
+                            <div className="product-cart__item">
+                                <CartProduct name={'DIsdfjsfjs II222'} price={300} image={null} quantity={2} id={1}/>
                             </div>
 
                             <div className="product-cart__price space-between">
@@ -44,7 +36,7 @@ function Cart() {
                             </div>
                             <div className="product-cart__total space-between">
                                 <span>Итого</span>
-                                <span>300 грн</span>
+                                <span>{totalPrice} грн</span>
                             </div>
                         </div>
                     </div>
