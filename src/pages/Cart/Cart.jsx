@@ -2,13 +2,18 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { useDispatch, useSelector } from 'react-redux';
 
 function Cart() {
+
+    const dispatch = useDispatch()
+    const cartItems = useSelector(({ cart }) => cart.items )
+
+    console.log(cartItems);
+
     return(
         <div className="container">
-
             <div className="cart">
-
                 <div className="cart__container">
 
                     <div className="product-cart">
@@ -23,7 +28,7 @@ function Cart() {
                                         <span style={{alignSelf: 'flex-start'}}><FontAwesomeIcon className="cart-product__delete" icon={faTimes} /></span>
                                     </div>
                                     <div className="cart-product__amount space-between">
-                                        <span>Количество: 1</span>
+                                        {/* <span>Количество: {cartItems[obj.id] && cartItems[obj.id].length}</span> */}
                                         <span className="cart-product__price">240 грн</span>
                                     </div>
                                 </div>

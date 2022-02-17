@@ -14,10 +14,15 @@ const cart = (state = initialState, action) => {
                     ? [action.payload]
                     : [...state.items[action.payload.id], action.payload],
             }
+
+            const allItems = [].concat.apply([],Object.values(newItems))
+            const totalPrice = allItems.reduce((sum, obj) => obj.actualPrice + sum, 0)
+
             return {
                 ...state,
                 items: newItems,
-                totalCount: [].concat.apply([],Object.values(newItems)).length
+                totalCount: allItems.length ,
+                totalPrice, 
             } 
         default:
             return state
