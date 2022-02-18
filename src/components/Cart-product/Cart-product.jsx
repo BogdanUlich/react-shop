@@ -1,9 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faTimes, faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons'
+import { clearCart } from '../../redux/actions/cart';
 
-const CartProduct = ({ name, image, price, quantity, id}) => {
+const CartProduct = ({ name, image, price, quantity, id, dispatch}) => {
+
+    const deleteProduct = () => {
+        dispatch(clearCart())
+    }
 
     return(
         <div className="cart-product">
@@ -11,11 +16,17 @@ const CartProduct = ({ name, image, price, quantity, id}) => {
              <div className="cart-product__info space-between">
                 <div className="cart-product__name space-between">
                     <Link to="/">{name}</Link>
-                    <span style={{alignSelf: 'flex-start'}}><FontAwesomeIcon className="cart-product__delete" icon={faTimes} /></span>
+                    <span onClick={() => deleteProduct()} style={{alignSelf: 'flex-start'}}><FontAwesomeIcon className="cart-product__delete" icon={faTimes} /></span>
                 </div>
                 <div className="cart-product__amount space-between">
-                    <span>Количество: {quantity}</span>
-                    <span className="cart-product__price">{price} грн</span>
+                    <span className='cart-product__amount-body'>
+                        <span>Количество: {quantity}</span>
+                        <FontAwesomeIcon className='cart-product__amount-icon' icon={faPlusCircle} />
+                        <FontAwesomeIcon className='cart-product__amount-icon' icon={faMinusCircle} />
+                    </span>
+                    <span className="cart-product__total-price">
+                        <span>{price} грн</span>
+                    </span>
                 </div>
             </div>
         </div>

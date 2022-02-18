@@ -7,12 +7,10 @@ function Cart() {
     const dispatch = useDispatch()
     const {totalPrice, totalCount, items} = useSelector(({ cart }) => cart )
 
-    // const item = () => {
-    //     Object.keys(items).map(key => {[items[key][0], items[key].length]})
-    // }
-
-    // console.log(item[1]);
-
+    const addedItems = Object.keys(items).map(key => {
+        return items[key].items[0]
+    })
+    
     return(
         <div className="container">
             <div className="cart">
@@ -23,7 +21,11 @@ function Cart() {
                         <h2 className="product-cart__title title">Корзина</h2>
 
                             <div className="product-cart__item">
-                                <CartProduct name={'DIsdfjsfjs II222'} price={300} image={null} quantity={2} id={1}/>
+                                {
+                                   addedItems.map(obj => <CartProduct name={obj.name} price={items[obj.id].totalPrice} image={obj.imageUrl} 
+                                                                      quantity={items[obj.id].items.length} id={obj.id} key={`${obj.id}_${obj.name}`}
+                                                                      dispatch={dispatch}/>) 
+                                }
                             </div>
 
                             <div className="product-cart__price space-between">
@@ -78,6 +80,7 @@ function Cart() {
                         <h2 className="product-ordering__title title">Детали</h2>
                         <textarea className='product-ordering__textarea' name="" id="" cols="30" rows="10"></textarea>
                     </div>
+
                 </div>
             </div>
         </div>

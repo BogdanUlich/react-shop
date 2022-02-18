@@ -19,6 +19,7 @@
 }
 .product-cart {
   flex: 0 0 30%;
+  min-width: 370px;
   &__body {
     position: sticky;
     top: 60px;
