@@ -20,6 +20,17 @@
 .product-cart {
   flex: 0 0 30%;
   min-width: 370px;
+  &__clear {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: $text-gray;
+    cursor: pointer;
+    font-size: 14px;
+    &:hover {
+      color: $brand-black;
+    }
+  }
   &__body {
     position: sticky;
     top: 60px;

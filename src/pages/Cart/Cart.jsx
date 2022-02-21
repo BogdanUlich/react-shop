@@ -1,6 +1,9 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { CartProduct } from '../../components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt} from '@fortawesome/free-solid-svg-icons'
+import { clearCart } from '../../redux/actions/cart';
 
 function Cart() {
 
@@ -11,20 +14,31 @@ function Cart() {
         return items[key].items[0]
     })
     
+    const onClearCart = () => {
+        if(window.confirm("Вы действительно хотите очистить корзину?")){
+            dispatch(clearCart())
+        }
+    }
+
     return(
         <div className="container">
             <div className="cart">
-                <div className="cart__container">
-
+                {
+                totalCount ? <div className="cart__container">
                     <div className="product-cart">
                         <div className="product-cart__body">
-                        <h2 className="product-cart__title title">Корзина</h2>
+                            <h2 className="product-cart__title title space-between">
+                                <span>Корзина</span>
+                                <span onClick={onClearCart} className="product-cart__clear">
+                                    <FontAwesomeIcon icon={faTrashAlt} />
+                                    Очистить корзину
+                                </span> 
+                            </h2>
 
                             <div className="product-cart__item">
-                                {
-                                   addedItems.map(obj => <CartProduct name={obj.name} price={items[obj.id].totalPrice} image={obj.imageUrl} 
-                                                                      quantity={items[obj.id].items.length} id={obj.id} key={`${obj.id}_${obj.name}`}
-                                                                      dispatch={dispatch}/>) 
+                                {addedItems.map(obj => <CartProduct name={obj.name} price={items[obj.id].totalPrice} image={obj.imageUrl} 
+                                                            quantity={items[obj.id].items.length} id={obj.id} key={`${obj.id}_${obj.name}`}
+                                                            dispatch={dispatch}/>) 
                                 }
                             </div>
 
@@ -80,8 +94,11 @@ function Cart() {
                         <h2 className="product-ordering__title title">Детали</h2>
                         <textarea className='product-ordering__textarea' name="" id="" cols="30" rows="10"></textarea>
                     </div>
-
+                </div> : 
+                <div className="cart__empty">
+                    Корзина пуста 
                 </div>
+                }
             </div>
         </div>
     )

@@ -2,12 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons'
-import { clearCart } from '../../redux/actions/cart';
+import { removeItem } from '../../redux/actions/cart';
 
 const CartProduct = ({ name, image, price, quantity, id, dispatch}) => {
 
     const deleteProduct = () => {
-        dispatch(clearCart())
+        dispatch(removeItem(id))
     }
 
     return(
@@ -16,7 +16,7 @@ const CartProduct = ({ name, image, price, quantity, id, dispatch}) => {
              <div className="cart-product__info space-between">
                 <div className="cart-product__name space-between">
                     <Link to="/">{name}</Link>
-                    <span onClick={() => deleteProduct()} style={{alignSelf: 'flex-start'}}><FontAwesomeIcon className="cart-product__delete" icon={faTimes} /></span>
+                    <span onClick={deleteProduct} style={{alignSelf: 'flex-start'}}><FontAwesomeIcon className="cart-product__delete" icon={faTimes} /></span>
                 </div>
                 <div className="cart-product__amount space-between">
                     <span className='cart-product__amount-body'>

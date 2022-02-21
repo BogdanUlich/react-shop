@@ -8,8 +8,8 @@ const getTotalPrice = arr => arr.reduce((sum, obj) => obj.actualPrice + sum, 0)
 
 const cart = (state = initialState, action) => {
     switch(action.type) {
-        case 'ADD_ITEM_TO_CART':
 
+        case 'ADD_ITEM_TO_CART':
             const currentItems = !state.items[action.payload.id] 
                 ? [action.payload]
                 : [...state.items[action.payload.id].items, action.payload]
@@ -34,9 +34,12 @@ const cart = (state = initialState, action) => {
             } 
 
         case 'CLEAR_CART':
+
             return{
                 ...state,
-                items:{}
+                items: {},
+                totalPrice: 0,
+                totalCount: 0
             }
 
         default:

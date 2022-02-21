@@ -3,6 +3,11 @@ export const addItemToCart = (obj) => ({
     payload: obj,
 })
 
+export const removeItem = (id) => ({
+    type: 'REMOVE_ITEM',
+    payload: id
+})
+
 export const clearCart = () => ({
-    type: 'CLEAR_CART'
+    type: 'CLEAR_CART',
 })
