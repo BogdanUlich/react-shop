@@ -1,22 +1,20 @@
 import classNames from 'classnames'
 import React from 'react'
 import PropTypes from 'prop-types'
-import product from '../../assets/img/blueberry.png'
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addItemToCart } from '../../redux/actions/cart';
 import { fetchProduct } from '../../redux/actions/product';
 
 
-function ProductCard({ available, name, actualPrice, oldPrice, id, imageUrl}) {
-
+function ProductCard({ available, name, actualPrice, oldPrice, id, img, link}) {
     const dispatch = useDispatch()
 
     const onAddToCart = () => {
         const obj = {
             id,
             name,
-            imageUrl,
+            img,
             actualPrice
         }
         dispatch(addItemToCart(obj))
@@ -28,9 +26,9 @@ function ProductCard({ available, name, actualPrice, oldPrice, id, imageUrl}) {
 
     return(
         <div className="product-card">
-            <Link onClick={onGoToProductPage} to={"/product-page/" + name} className="product-card__img"><img src={product} alt=""/></Link>
+            <Link onClick={onGoToProductPage} to={"/product-page/" + link} className="product-card__img"><img src={img} alt=""/></Link>
             <span className="product-card__description">
-                <Link onClick={onGoToProductPage} to={"/product-page/" + name} className="product-card__name">{name}</Link>
+                <Link onClick={onGoToProductPage} to={"/product-page/" + link} className="product-card__name">{name}</Link>
                 <span className="product-card__discount">Старая цена <span>{oldPrice} грн</span></span>
                 <span className="product-card__price">{actualPrice} грн</span>
                 <span className={classNames("product-card__buy", available ? 'active' : '')}>
