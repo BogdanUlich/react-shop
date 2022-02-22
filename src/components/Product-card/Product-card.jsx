@@ -22,19 +22,19 @@ function ProductCard({ available, name, actualPrice, oldPrice, id, imageUrl}) {
         dispatch(addItemToCart(obj))
     }
 
-    const onGoToProductPage = (id) => {
+    const onGoToProductPage = () => {
         dispatch(fetchProduct(id))
     }
 
     return(
         <div className="product-card">
-            <Link onClick={() => onGoToProductPage(id)} to={"/product-page/" + name} className="product-card__img"><img src={product} alt=""/></Link>
+            <Link onClick={onGoToProductPage} to={"/product-page/" + name} className="product-card__img"><img src={product} alt=""/></Link>
             <span className="product-card__description">
-                <Link onClick={() => onGoToProductPage(id)} to={"/product-page/" + name} className="product-card__name">{name}</Link>
+                <Link onClick={onGoToProductPage} to={"/product-page/" + name} className="product-card__name">{name}</Link>
                 <span className="product-card__discount">Старая цена <span>{oldPrice} грн</span></span>
                 <span className="product-card__price">{actualPrice} грн</span>
                 <span className={classNames("product-card__buy", available ? 'active' : '')}>
-                    <button onClick={() => onAddToCart()} className="product-card__btn">В корзину</button>
+                    <button onClick={onAddToCart} className="product-card__btn">В корзину</button>
                     <span href="" className="product-card__unavailable">Нет в наличии</span>
                 </span>
             </span>

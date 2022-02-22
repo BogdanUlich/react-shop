@@ -11,7 +11,6 @@ function ProductPage() {
     const dispatch = useDispatch()
 
     const onAddToCart = ({ id, name, imageUrl, actualPrice }) => {
-
         const obj = {
             id,
             name,

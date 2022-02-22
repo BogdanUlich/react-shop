@@ -34,7 +34,7 @@ function Main() {
                         <div className="intro__info">
                             <h1 className="intro__title">EMPIRE POD</h1>
                             <p className="intro__text">Официальный интернет-магазин одноразовых электронных сигарет, Elf Bar, HQD, BANG, оригинальная продукция, большой ассортимент</p>
-                            <button onClick={() => executeScroll()} className="intro__btn btn-black">Каталог</button>
+                            <button onClick={executeScroll} className="intro__btn btn-black">Каталог</button>
                         </div>
                         <Slider infinite>
                             <Slider.Page>

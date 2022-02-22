@@ -9,7 +9,7 @@ const getTotalPrice = arr => arr.reduce((sum, obj) => obj.actualPrice + sum, 0)
 const cart = (state = initialState, action) => {
     switch(action.type) {
 
-        case 'ADD_ITEM_TO_CART':
+        case 'ADD_ITEM_TO_CART': {
             const currentItems = !state.items[action.payload.id] 
                 ? [action.payload]
                 : [...state.items[action.payload.id].items, action.payload]
@@ -32,8 +32,9 @@ const cart = (state = initialState, action) => {
                 totalCount: allItems.length,
                 totalPrice, 
             } 
+        }
 
-        case 'CLEAR_CART':
+        case 'CLEAR_CART': {
 
             return {
                 ...state,
@@ -41,8 +42,51 @@ const cart = (state = initialState, action) => {
                 totalPrice: 0,
                 totalCount: 0
             }
+        }
 
-        case 'REMOVE_CART_ITEM':
+        case 'PLUS_CART_ITEM': {
+
+            const newItems = [...state.items[action.payload].items, state.items[action.payload].items[0]]
+            let plusTotalCount = state.totalCount + 1
+            let plusTotalPrice = state.totalPrice + state.items[action.payload].items[0].actualPrice
+
+            return {
+                ...state,
+                items: {
+                    ...state.items,
+                    [action.payload]: {
+                        items: newItems,
+                        totalPrice: getTotalPrice(newItems)
+                    } 
+                },
+                totalPrice: plusTotalPrice,
+                totalCount: plusTotalCount,
+            }
+        }
+
+        case 'MINUS_CART_ITEM': {
+
+            const oldItems = state.items[action.payload].items
+            const newItems = oldItems.length > 1 ? state.items[action.payload].items.slice(1) : oldItems
+            let minusTotalCount = state.totalCount > 1 && state.items[action.payload].items.length > 1 ? state.totalCount - 1 : state.totalCount
+            let minusTotalPrice = state.items[action.payload].items.length > 1 ? state.totalPrice - state.items[action.payload].items[0].actualPrice : state.totalPrice
+            
+
+            return {
+                ...state,
+                items: {
+                    ...state.items,
+                    [action.payload]: {
+                        items: newItems,
+                        totalPrice: getTotalPrice(newItems)
+                    } 
+                },
+                totalPrice: minusTotalPrice,
+                totalCount: minusTotalCount,
+            }
+        }
+
+        case 'REMOVE_CART_ITEM': {
 
             const withoutRemovedItems = {
                 ...state.items
@@ -57,6 +101,7 @@ const cart = (state = initialState, action) => {
                 totalPrice: state.totalPrice - currentTotalPrice,
                 totalCount: state.totalCount - currentTotalCount
             }
+        }
 
         default:
             return state
