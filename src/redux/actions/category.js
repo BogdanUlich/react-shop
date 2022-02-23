@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 export const fetchCategory = () => (dispatch) => {
-    axios.get('/categories').then( ({ data }) => {
-            dispatch(setCategory(data))
-    })
+    axios.get('http://elfbar-shop/?action=getIndexCategories').then(function (response) {
+        dispatch(setCategory(response.data));
+    });
 }
 
 export const setCategory = (items) => ({
