@@ -18,6 +18,7 @@ function Main() {
     const isLoaded = useSelector(({ products }) => products.isLoaded )
 
     useEffect(() => {
+        window.scrollTo({ top: 0 })
         dispatch(fetchPopularProducts())
     }, [])
 

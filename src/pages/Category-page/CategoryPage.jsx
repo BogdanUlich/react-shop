@@ -15,6 +15,7 @@ function CategoryPage() {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        window.scrollTo({ top: 0 })
         dispatch(fetchProducts(category, sortBy))
     }, [sortBy])
 

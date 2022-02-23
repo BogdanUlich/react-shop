@@ -8,6 +8,7 @@ import { fetchProduct } from '../../redux/actions/product';
 
 
 function ProductCard({ available, name, actualPrice, oldPrice, id, img, link}) {
+
     const dispatch = useDispatch()
 
     const onAddToCart = () => {
@@ -36,7 +37,7 @@ function ProductCard({ available, name, actualPrice, oldPrice, id, img, link}) {
                     <span href="" className="product-card__unavailable">Нет в наличии</span>
                 </span>
             </span>
-        </div>     
+        </div> 
     )
 }
 

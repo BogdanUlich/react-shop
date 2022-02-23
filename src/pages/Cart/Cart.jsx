@@ -4,6 +4,9 @@ import { CartProduct } from '../../components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 import { clearCart } from '../../redux/actions/cart';
+import emptyCart from '../../assets/img/cart/empty-cart.png'
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function Cart() {
 
@@ -19,6 +22,10 @@ function Cart() {
             dispatch(clearCart())
         }
     }
+
+    useEffect(() => {
+        window.scrollTo({ top: 0 })
+    }, [])
 
     return(
         <div className="container">
@@ -96,7 +103,11 @@ function Cart() {
                     </div>
                 </div> : 
                 <div className="cart__empty">
-                    Корзина пуста 
+                    <div className="cart__empty-title">В вашей корзине пока нет товаров</div>
+                    <div className="cart__empty-img">
+                        <img src={emptyCart} alt="" />
+                    </div>
+                    <Link to="/" className="cart__empty-btn btn-black">Смотреть товары</Link>
                 </div>
                 }
             </div>
