@@ -1,24 +1,24 @@
 import axios from 'axios';
 
 export const fetchProduct = (id) => (dispatch) => {
-    dispatch(setLoaded(false))
-    axios.get(`/disposablePods?id=${id}`).then( ({ data }) => {
-            dispatch(setProducts(data))
-     })
+    dispatch(setLoaded(false));
+    axios.get('http://elfbar-shop/?action=getProduct&id='+id).then(function (response) {
+        dispatch(setProducts([response.data]));
+    });
 }
 
 export const fetchProducts = (category, sortBy) => (dispatch) => {
-    dispatch(setLoaded(false))
-    axios.get(`/disposablePods?category=${category}&_sort=${sortBy.type}&_order=${sortBy.order}`).then( ({ data }) => {
-            dispatch(setProducts(data))
-     })
+    dispatch(setLoaded(false));
+    axios.get('http://elfbar-shop/?action=getCategoryProducts&category='+category+'&sort='+sortBy.type).then(function (response) {
+        dispatch(setProducts(response.data));
+    });
 }
 
 export const fetchPopularProducts = () => (dispatch) => {
-    dispatch(setLoaded(false))
-    axios.get('/disposablePods?rating=5&available=1').then( ({ data }) => {
-            dispatch(setProducts(data))
-     })
+    dispatch(setLoaded(false));
+    axios.get('http://elfbar-shop/?action=getPopularProducts').then(function (response) {
+        dispatch(setProducts(response.data))
+    });
 }
 
 export const setProducts = (items) => ({

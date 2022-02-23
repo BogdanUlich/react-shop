@@ -3,7 +3,6 @@ import product from '../../assets/img/blueberry.png'
 import { useSelector, useDispatch } from 'react-redux';
 import { addItemToCart } from '../../redux/actions/cart';
 
-
 function ProductPage() {
 
     const item = useSelector(({ products }) => products.items )
@@ -26,9 +25,10 @@ function ProductPage() {
                 <div className="product">
                     <div className="product__column">
                         <div className="product__wrapper">
-                            <img  alt="" src={product} className="product__img" />
+                            <img  alt="" src={item[0].img} className="product__img" />
                         </div>
                         <div className="product__description">
+                            {item[0].description}
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto obcaecati tempora repellendus earum praesentium, modi officiis dolorum dolor iure, quo aspernatur iste minus nemo accusamus aut ratione expedita aliquam tempore.</p>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto obcaecati tempora repellendus earum praesentium, modi officiis dolorum dolor iure, quo aspernatur iste minus nemo accusamus aut ratione expedita aliquam tempore.</p>
                             <ul className="product__description-list">
@@ -38,13 +38,11 @@ function ProductPage() {
                                 <li>Lorem ipsum dolor sit amet consectetur adipisicing.</li>
                                 <li>Lorem ipsum dolor sit amet consectetur adipisicing.</li>
                             </ul>
-                            <img src="img/banners/banner.jpg" alt="" className="product__description-img" />
                         </div>
                     </div>
                     <div className="product__column">
                         <div className="product__info">
                             <h1 className="product__name">{item[0].name}</h1>
-                            {/* <div className="product__code">Артикул 00001</div> */}
                             <div className="product__price">{item[0].actualPrice} грн.</div>
                             <div className="product__discount">
                                 <div className="product__old-price">{item[0].oldPrice} грн.</div>
@@ -58,7 +56,7 @@ function ProductPage() {
                         </div>
                     </div>
                     <div className="product__img-md">
-                        <img  alt="" src={product} className="product__img" />  
+                        <img  alt="" src={product} className="product__img" />
                     </div>
                 </div>
             </div>
