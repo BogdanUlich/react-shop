@@ -17,7 +17,7 @@ function ProductPage() {
             img,
             actualPrice,
         }
-        dispatch(addItemToCart(obj)) 
+        dispatch(addItemToCart(obj))
     }
 
     useEffect(() => {
@@ -30,7 +30,7 @@ function ProductPage() {
                 <div className="product">
                     <div className="product__column">
                         <div className="product__wrapper">
-                            <img  alt="" src={img} className="product__img" />
+                            <img  alt="" src={require('../../assets/img/products/'+item[0].img)} className="product__img" />
                         </div>
                         <div className="product__description">
                             {description}

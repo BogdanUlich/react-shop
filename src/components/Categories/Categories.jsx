@@ -9,7 +9,7 @@ function Categories({ categoriesRef }) {
         dispatch(fetchCategory())
     }, [])
 
-    const categories = useSelector(({ category }) => category.items)
+    const categories = useSelector(({ category }) => category.items);
 
     const dispatch = useDispatch()
 
@@ -21,11 +21,10 @@ function Categories({ categoriesRef }) {
             <h2 ref={categoriesRef} className="main-title">Каталог товаров</h2>
             <div className="categories__container container">
                 {categories.map( obj  => (
-                    <Link to={`/category-page/${obj.category}`} className="category" key={`${obj.category}`} onClick={() => onSelectCategory(obj.category)}
-                        >
-                        <img className="category__img" src="https://vapers-dreams.ru/image/cache/catalog/odnorazovye/odnorazovye-e-sigarety-pump-strawberry-1000x1000.png" alt="" />
+                    <Link to={`/category-page/${obj.link}`} className="category" key={`${obj.link}`} onClick={() => onSelectCategory(obj.link)}>
+                        <img className="category__img" src={require('../../assets/img/products/'+obj.img)} alt="" />
                         <div className="category__name">{obj.name}</div>
-                        {!obj.available ? <div className="category__label">Нет в наличии</div> : ''}
+                        {!obj.shw ? <div className="category__label">Нет в наличии</div> : ''}
                     </Link>
                 ))}
             </div>
