@@ -6,9 +6,8 @@ import Categories from '../../components/Categories/Categories';
 import ProductCard from '../../components/Product-card/Product-card';
 import { useRef } from 'react/cjs/react.development';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchPopularProducts } from '../../redux/actions/product';
 import { LoadingPreview } from '../../components';
-
+import { fetchPopularProducts } from '../../api';
 
 function Main() {
 

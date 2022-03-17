@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import Sort from '../../components/Sort-popup/Sort';
 import ProductCard from '../../components/Product-card/Product-card';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts } from '../../redux/actions/product';
 import { LoadingPreview } from '../../components';
+import { fetchProducts } from '../../api';
 
 function CategoryPage() {
 

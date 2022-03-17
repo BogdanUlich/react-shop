@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchCategory, selectCategory } from '../../redux/actions/category';
+import { selectCategory } from '../../redux/actions/category';
+import { fetchCategory } from '../../api';
 
 function Categories({ categoriesRef }) {
-
+    
     useEffect(() => {
         dispatch(fetchCategory())
     }, [])

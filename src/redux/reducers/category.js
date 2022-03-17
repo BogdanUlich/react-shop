@@ -1,3 +1,5 @@
+import { SELECT_CATEGORY, SET_CATEGORY } from "../constants"
+
 const initialState = {
     items: [],
     category: null
@@ -5,12 +7,12 @@ const initialState = {
 
 const categories = (state = initialState, action) => {
     switch(action.type) {
-        case 'SET_CATEGORY':
+        case SET_CATEGORY :
             return {
                 ...state,
                 items: action.payload
             } 
-        case 'SELECT_CATEGORY':
+        case SELECT_CATEGORY :
             return {
                 ...state,
                 category: action.payload

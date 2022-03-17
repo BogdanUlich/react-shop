@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addItemToCart } from '../../redux/actions/cart';
-import { fetchProduct } from '../../redux/actions/product';
+import { fetchProduct } from '../../api';
 
 function ProductCard({ available, name, actualPrice, oldPrice, id, img, link}) {
 

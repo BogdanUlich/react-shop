@@ -1,3 +1,5 @@
+import { SET_SORT_BY } from "../constants"
+
 const initialState = {
     sortBy : {
         type: 'rating',
@@ -6,13 +8,15 @@ const initialState = {
 }
 
 const filters = (state = initialState, action) => {
-    if(action.type === 'SET_SORT_BY') {
-        return {
-            ...state,
-            sortBy: action.payload
-        }
-    }
-    return state
+    switch(action.type){
+        case SET_SORT_BY : 
+            return {
+                ...state,
+                sortBy: action.payload
+            }
+        default:
+            return state
+        }  
 }
 
 

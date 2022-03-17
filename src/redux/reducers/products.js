@@ -1,3 +1,5 @@
+import { SET_LOADED, SET_PRODUCTS } from "../constants"
+
 const initialState = {
     items: [],
     isLoaded: false,
@@ -5,13 +7,13 @@ const initialState = {
 
 const products = (state = initialState, action) => {
     switch(action.type){
-        case 'SET_PRODUCTS':
+        case SET_PRODUCTS :
             return {
                 ...state,
                 items: action.payload,
                 isLoaded: true
             }
-        case 'SET_LOADED':
+        case SET_LOADED :
             return {
                 ...state,
                 isLoaded: action.payload

@@ -1,4 +1,3 @@
-import '../../scss/page.scss'
 import { useContext } from 'react'
 import {SliderContext} from './Slider-context'
 

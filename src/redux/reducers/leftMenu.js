@@ -1,15 +1,19 @@
+import { SET_VISIBLE_MENU } from "../constants"
+
 const initialState = {
     visibleMenu: false
 }
 
 const leftMenu = (state = initialState, action) => {
-    if(action.type === 'SET_VISIBLE_MENU') {
-        return {
-            ...state,
-            visibleMenu: action.payload,
-        }
+    switch (action.type) {
+        case SET_VISIBLE_MENU :
+            return {
+                ...state,
+                visibleMenu: action.payload,
+            }
+        default:
+            return state
     }
-    return state
 }
 
 
