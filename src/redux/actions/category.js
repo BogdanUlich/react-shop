@@ -1,4 +1,4 @@
-import { SELECT_CATEGORY, SET_CATEGORY } from "../constants"
+import { SELECT_CATEGORY, SET_CATEGORY, SET_LOADED } from "../constants"
 
 export const setCategory = (items) => ({
     type: SET_CATEGORY,
@@ -10,3 +10,7 @@ export const selectCategory = (category) => ({
     payload: category,
 })
 
+export const setCategoryLoaded = (payload) => ({
+    type: SET_LOADED,
+    payload
+})

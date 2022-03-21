@@ -51,6 +51,12 @@ const Slider = ({ children, infinite }) => {
 
     const windowElRef = useRef()
 
+    // useEffect(() => {
+    //     setInterval(() => {
+    //         handleRightArrowClick()
+    //     }, 5000);
+    // }, []);
+
     useEffect(() =>{
 
         const resizeHandler = () => {

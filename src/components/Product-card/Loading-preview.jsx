@@ -4,7 +4,7 @@ import ContentLoader from "react-content-loader"
 function LoadingPreview() {
     return(
         <ContentLoader 
-            className="loading-preview"
+            className="product-preview"
             speed={2}
             width={300}
             height={495}

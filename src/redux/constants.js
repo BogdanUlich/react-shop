@@ -17,7 +17,10 @@ export const SET_SORT_BY = "SET_SORT_BY"
 
 //PRODUCTS
 export const SET_PRODUCTS = "SET_PRODUCTS"
-export const SET_LOADED = "SET_LOADED"
 //PRODUCTS
 
+//LEFT-MENU
 export const SET_VISIBLE_MENU = "SET_VISIBLE_MENU"
+//LEFT-MENU
+
+export const SET_LOADED = "SET_LOADED"

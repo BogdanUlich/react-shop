@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { setCategory } from '../redux/actions/category';
+import { setCategory, setCategoryLoaded } from '../redux/actions/category';
 import { setLoaded, setProducts } from '../redux/actions/product';
 
 // CATEGORIES
 export const fetchCategory = () => (dispatch) => {
+    dispatch(setCategoryLoaded(false));
     axios.get('http://elfbar-shop/?action=getIndexCategories').then(function (response) {
         dispatch(setCategory(response.data));
     });
