@@ -20,6 +20,9 @@ function ProductPage() {
         dispatch(addItemToCart(obj))
     }
 
+    let discount = 100 - Math.floor((actualPrice*100)/oldPrice);
+    discount = discount < 0 ? 0 : discount;
+
     useEffect(() => {
         window.scrollTo({ top: 0 })
     }, [])
@@ -49,10 +52,14 @@ function ProductPage() {
                         <div className="product__info">
                             <h1 className="product__name">{name}</h1>
                             <div className="product__price">{actualPrice} грн.</div>
-                            <div className="product__discount">
-                                <div className="product__old-price">{oldPrice} грн.</div>
-                                <div className="product__discount-value">Скидка 14%</div>
-                            </div>
+                            {discount > 0
+                                ?
+                                <div className="product__discount">
+                                    <div className="product__old-price">{oldPrice} грн.</div>
+                                    <div className="product__discount-value">Скидка {discount}%</div>
+                                </div>
+                                : ''
+                            }
                             <div className="product__label">Новинка</div>
                             {/* <div className="product__amount">
                                 Количество: <input type="text" placeholder="1" />
