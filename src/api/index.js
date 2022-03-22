@@ -21,7 +21,7 @@ export const fetchProduct = (id) => (dispatch) => {
 
 export const fetchProducts = (category, sortBy) => (dispatch) => {
     dispatch(setLoaded(false));
-    axios.get('http://elfbar-shop/?action=getCategoryProducts&category='+category+'&sort='+sortBy.type).then(function (response) {
+    axios.get('http://elfbar-shop/?action=getCategoryProducts&category='+category+'&sort='+sortBy.type+'&order='+sortBy.order).then(function (response) {
         dispatch(setProducts(response.data));
     });
 }
