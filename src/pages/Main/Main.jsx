@@ -1,69 +1,61 @@
-import React, { useEffect } from 'react';
-import Slider from '../../components/Slider/Slider';
-import banner from'../../assets/img/banners/banner.jpg'
-import banner2 from'../../assets/img/banners/banner2.jpg'
-import Categories from '../../components/Categories/Categories';
-import ProductCard from '../../components/Product-card/Product-card';
-import { useRef } from 'react/cjs/react.development';
-import { useSelector, useDispatch } from 'react-redux';
-import { LoadingPreview } from '../../components';
-import { fetchPopularProducts } from '../../api';
+import React, { useEffect } from "react"
+import Categories from "../../components/Categories/Categories"
+import ProductCard from "../../components/Product-card/Product-card"
+import { useRef } from "react/cjs/react.development"
+import { useSelector, useDispatch } from "react-redux"
+import { LoadingPreview } from "../../components"
+import { fetchPopularProducts } from "../../api"
+import SimpleSlider from "../../components/Slider/Slick-slider"
 
 function Main() {
+  const dispatch = useDispatch()
 
-    const dispatch = useDispatch()
+  const items = useSelector(({ products }) => products.items)
+  const isLoaded = useSelector(({ products }) => products.isLoaded)
 
-    const items = useSelector(({ products }) => products.items )
-    const isLoaded = useSelector(({ products }) => products.isLoaded )
+  useEffect(() => {
+    window.scrollTo({ top: 0 })
+    dispatch(fetchPopularProducts())
+  }, [])
 
-    useEffect(() => {
-        window.scrollTo({ top: 0 })
-        dispatch(fetchPopularProducts())
-    }, [])
+  const categoriesRef = useRef(null)
 
-    const categoriesRef = useRef(null) 
+  const executeScroll = () => {
+    categoriesRef.current.scrollIntoView({ behavior: "smooth" })
+  }
 
-    const executeScroll = () => {
-        categoriesRef.current.scrollIntoView({ behavior: 'smooth'})
-    }
-    
-    return(
-        <div className='main'>
-            <section className="intro">
-                    <div className="intro__container container">
-                        <div className="intro__info">
-                            <h1 className="intro__title">EMPIRE POD</h1>
-                            <p className="intro__text">Официальный интернет-магазин одноразовых электронных сигарет, Elf Bar, HQD, BANG, оригинальная продукция, большой ассортимент</p>
-                            <button onClick={executeScroll} className="intro__btn btn-black">Каталог</button>
-                        </div>
-                        <Slider infinite>
-                            <Slider.Page>
-                                <div className="slider__item">
-                                    <img className="slider__img" src={banner} alt="" />
-                                </div>
-                            </Slider.Page>
-                            <Slider.Page>
-                                <div className="slider__item">
-                                    <img className="slider__img" src={banner2} alt="" />
-                                </div>
-                            </Slider.Page>
-                        </Slider>    
-                    </div>
-                </section>             
-                
-                <Categories categoriesRef={categoriesRef} />
-
-                <section className="popular-products">
-                    <h2 className="main-title">Популярные товары</h2>
-                    <div className="popular-products__container container">
-                        {isLoaded 
-                            ? items.map(obj => <ProductCard key={obj.id} {...obj}/>) 
-                            : Array(8).fill(0).map((_, index) => <LoadingPreview key={index} />)
-                        }
-                    </div>
-                </section>
+  return (
+    <div className="main">
+      <section className="intro">
+        <div className="intro__container container">
+          <div className="intro__info">
+            <h1 className="intro__title">EMPIRE POD</h1>
+            <p className="intro__text">
+              Официальный интернет-магазин одноразовых электронных сигарет, Elf Bar, HQD, BANG,
+              оригинальная продукция, большой ассортимент
+            </p>
+            <button onClick={executeScroll} className="intro__btn btn-black">
+              Каталог
+            </button>
+          </div>
+          <SimpleSlider />
         </div>
-    )
+      </section>
+
+      <Categories categoriesRef={categoriesRef} />
+
+      <section className="popular-products">
+        <h2 className="main-title">Популярные товары</h2>
+        <div className="popular-products__container container">
+          {isLoaded
+            ? items.map((obj) => <ProductCard key={obj.id} {...obj} />)
+            : Array(8)
+                .fill(0)
+                .map((_, index) => <LoadingPreview key={index} />)}
+        </div>
+      </section>
+    </div>
+  )
 }
 
-export default Main;
+export default Main

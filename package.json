@@ -33,10 +33,15 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "lint" : "eslint --ext .js, .jsx src --fix",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "npx json-server -p 3001 -w public/db.json"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "semi": false
   },
   "eslintConfig": {
     "extends": [
@@ -55,5 +60,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.11.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "prettier": "^2.6.0"
   }
 }
