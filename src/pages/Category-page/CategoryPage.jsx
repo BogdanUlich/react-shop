@@ -11,11 +11,14 @@ function CategoryPage() {
   const sortBy = useSelector(({ filters }) => filters.sortBy)
   const isLoaded = useSelector(({ products }) => products.isLoaded)
 
+  const link = window.location.href.split("/").pop()
+  const categoryLink = category ? category : link
+
   const dispatch = useDispatch()
 
   useEffect(() => {
     window.scrollTo({ top: 0 })
-    dispatch(fetchProducts(category, sortBy))
+    dispatch(fetchProducts(categoryLink, sortBy))
   }, [sortBy])
 
   const sortItems = [

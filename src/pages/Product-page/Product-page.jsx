@@ -1,15 +1,21 @@
 import React from "react"
-import product from "../../assets/img/blueberry.png"
 import { useSelector, useDispatch } from "react-redux"
 import { addItemToCart } from "../../redux/actions/cart"
 import { useEffect } from "react"
+import { fetchProduct } from "../../api"
 
 function ProductPage() {
+  const link = window.location.href.split("/").pop()
+
+  const dispatch = useDispatch()
+
+  dispatch(fetchProduct(link))
+
   const { img, description, name, actualPrice, oldPrice, id } = useSelector(
     ({ products }) => products.items[0]
   )
+
   //   const isLoaded = useSelector(({ products }) => products.isLoaded)
-  const dispatch = useDispatch()
 
   const onAddToCart = () => {
     const obj = {
@@ -83,7 +89,7 @@ function ProductPage() {
             </div>
           </div>
           <div className="product__img-md">
-            <img alt="" src={product} className="product__img" />
+            {/* <img alt="" src={product} className="product__img" /> */}
           </div>
         </div>
       </div>

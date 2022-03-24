@@ -4,7 +4,6 @@ import PropTypes from "prop-types"
 import { Link } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { addItemToCart } from "../../redux/actions/cart"
-import { fetchProduct } from "../../api"
 
 function ProductCard({ available, name, actualPrice, oldPrice, id, img, link }) {
   const dispatch = useDispatch()
@@ -19,21 +18,13 @@ function ProductCard({ available, name, actualPrice, oldPrice, id, img, link }) 
     dispatch(addItemToCart(obj))
   }
 
-  const onGoToProductPage = () => {
-    dispatch(fetchProduct(id))
-  }
-
   return (
     <div className="product-card">
-      <Link onClick={onGoToProductPage} to={"/product-page/" + link} className="product-card__img">
+      <Link to={"/product-page/" + link} className="product-card__img">
         <img src={require("../../assets/img/products/" + img)} alt="" />
       </Link>
       <span className="product-card__description">
-        <Link
-          onClick={onGoToProductPage}
-          to={"/product-page/" + link}
-          className="product-card__name"
-        >
+        <Link to={"/product-page/" + link} className="product-card__name">
           {name}
         </Link>
         <span className="product-card__discount">
