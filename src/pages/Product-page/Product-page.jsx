@@ -9,8 +9,6 @@ function ProductPage() {
 
   const dispatch = useDispatch()
 
-  dispatch(fetchProduct(link))
-
   const { img, description, name, actualPrice, oldPrice, id } = useSelector(
     ({ products }) => products.items[0]
   )
@@ -32,6 +30,7 @@ function ProductPage() {
 
   useEffect(() => {
     window.scrollTo({ top: 0 })
+    dispatch(fetchProduct(link))
   }, [])
 
   return (
