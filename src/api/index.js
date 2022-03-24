@@ -1,4 +1,5 @@
 import axios from "axios"
+import { setCities } from "../redux/actions/cart"
 import { setCategory, setCategoryLoaded } from "../redux/actions/category"
 import { setLoaded, setProducts } from "../redux/actions/product"
 
@@ -42,3 +43,11 @@ export const fetchPopularProducts = () => (dispatch) => {
   })
 }
 // PRODUCTS
+
+// CART
+export const fetchCities = () => {
+  axios.get("http://elfbar-shop/?action=getCity&name=Киев").then(function (response) {
+    dispatch(setCities(response.data))
+  })
+}
+// CART
