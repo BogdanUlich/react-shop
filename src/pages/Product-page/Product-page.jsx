@@ -9,7 +9,10 @@ function ProductPage() {
 
   const dispatch = useDispatch()
 
-  dispatch(fetchProduct(link))
+  useEffect(() => {
+    window.scrollTo({ top: 0 })
+    dispatch(fetchProduct(link))
+  }, [])
 
   const { img, description, name, actualPrice, oldPrice, id } = useSelector(
     ({ products }) => products.items[0]
@@ -29,10 +32,6 @@ function ProductPage() {
 
   let discount = 100 - Math.floor((actualPrice * 100) / oldPrice)
   discount = discount < 0 ? 0 : discount
-
-  useEffect(() => {
-    window.scrollTo({ top: 0 })
-  }, [])
 
   return (
     <div className="product-page">
