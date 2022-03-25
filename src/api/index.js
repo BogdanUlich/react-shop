@@ -14,7 +14,7 @@ export const fetchCategory = () => (dispatch) => {
 // PRODUCTS
 export const fetchProduct = (link) => (dispatch) => {
   dispatch(setLoaded(false))
-  axios.get("http://elfbar-shop/?action=getProduct&id=" + id).then(function (response) {
+  axios.get("http://elfbar-shop/?action=getProduct&link=" + link).then(function (response) {
     dispatch(setProducts([response.data]))
   })
 }
