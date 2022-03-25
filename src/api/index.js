@@ -45,7 +45,7 @@ export const fetchPopularProducts = () => (dispatch) => {
 // PRODUCTS
 
 // CART
-export const fetchCities = () => {
+export const fetchCities = () => (dispatch) => {
   axios.get("http://elfbar-shop/?action=getCity&name=Киев").then(function (response) {
     dispatch(setCities(response.data))
   })

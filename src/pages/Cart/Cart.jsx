@@ -11,11 +11,6 @@ import { fetchCities } from "../../api"
 
 function Cart() {
   const dispatch = useDispatch()
-  const { totalPrice, totalCount, items } = useSelector(({ cart }) => cart)
-
-  const addedItems = Object.keys(items).map((key) => {
-    return items[key].items[0]
-  })
 
   const onClearCart = () => {
     if (window.confirm("Вы действительно хотите очистить корзину?")) {
@@ -28,8 +23,14 @@ function Cart() {
   }, [])
 
   useEffect(() => {
-    fetchCities()
+    dispatch(fetchCities())
   }, [])
+
+  const { totalPrice, totalCount, items, cities } = useSelector(({ cart }) => cart)
+
+  const addedItems = Object.keys(items).map((key) => {
+    return items[key].items[0]
+  })
 
   return (
     <div className="container">
@@ -106,7 +107,11 @@ function Cart() {
                     className="product-ordering__input"
                     placeholder="Выберите город"
                   />
-                  <ul className="product-ordering__list"></ul>
+                  <ul className="product-ordering__list">
+                    {cities.map((obj) => (
+                      <li key={obj.id}>{obj.name}</li>
+                    ))}
+                  </ul>
                 </div>
                 <div className="product-ordering__dropdown">
                   <input
