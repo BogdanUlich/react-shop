@@ -10,27 +10,31 @@ function ProductPage() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    window.scrollTo({ top: 0 })
     dispatch(fetchProduct(link))
+    window.scrollTo({ top: 0 })
   }, [])
 
-  const { img, description, name, actualPrice, oldPrice, id } = useSelector(
-    ({ products }) => products.items[0]
-  )
+  const product = useSelector(({ products }) => products.item[0])
+
+  const isProductEmpty = () => {
+    product ? null : dispatch(fetchProduct(link))
+  }
+
+  isProductEmpty()
 
   //   const isLoaded = useSelector(({ products }) => products.isLoaded)
 
   const onAddToCart = () => {
     const obj = {
-      id,
-      name,
-      img,
-      actualPrice,
+      product: product.id,
+      name: product.name,
+      img: product.img,
+      actualPrice: product.actualPrice,
     }
     dispatch(addItemToCart(obj))
   }
 
-  let discount = 100 - Math.floor((actualPrice * 100) / oldPrice)
+  let discount = 100 - Math.floor((product.actualPrice * 100) / product.oldPrice)
   discount = discount < 0 ? 0 : discount
 
   return (
@@ -41,12 +45,12 @@ function ProductPage() {
             <div className="product__wrapper">
               <img
                 alt=""
-                src={require("../../assets/img/products/" + img)}
+                src={require("../../assets/img/products/" + product.img)}
                 className="product__img"
               />
             </div>
             <div className="product__description">
-              {description}
+              {product.description}
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto obcaecati
                 tempora repellendus earum praesentium, modi officiis dolorum dolor iure, quo
@@ -68,11 +72,11 @@ function ProductPage() {
           </div>
           <div className="product__column">
             <div className="product__info">
-              <h1 className="product__name">{name}</h1>
-              <div className="product__price">{actualPrice} грн.</div>
+              <h1 className="product__name">{product.name}</h1>
+              <div className="product__price">{product.actualPrice} грн.</div>
               {discount > 0 ? (
                 <div className="product__discount">
-                  <div className="product__old-price">{oldPrice} грн.</div>
+                  <div className="product__old-price">{product.oldPrice} грн.</div>
                   <div className="product__discount-value">Скидка {discount}%</div>
                 </div>
               ) : (

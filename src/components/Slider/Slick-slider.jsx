@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import Slider from "react-slick";
-import banner from'../../assets/img/banners/banner.jpg'
-import banner2 from'../../assets/img/banners/banner2.jpg'
+import React, { Component } from "react"
+import Slider from "react-slick"
+import banner from "../../assets/img/banners/banner.jpg"
+import banner2 from "../../assets/img/banners/banner2.jpg"
 
 export default class SimpleSlider extends Component {
   render() {
@@ -9,10 +9,10 @@ export default class SimpleSlider extends Component {
       infinite: true,
       speed: 500,
       autoplay: true,
-      autoplaySpeed: 4000,
+      autoplaySpeed: 3000,
       slidesToShow: 1,
-      slidesToScroll: 1
-    };
+      slidesToScroll: 1,
+    }
     return (
       <div className="slider">
         <Slider {...settings}>
@@ -24,6 +24,6 @@ export default class SimpleSlider extends Component {
           </div>
         </Slider>
       </div>
-    );
+    )
   }
 }

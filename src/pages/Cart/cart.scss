@@ -107,13 +107,10 @@
     height: 40px;
     border-radius: 6px;
   }
-  &__dropdown-group {
+  &__select-group {
     display: flex;
     flex-direction: column;
     gap: 10px;
-  }
-  &__dropdown {
-    position: relative;
   }
   &__switch {
     display: flex;

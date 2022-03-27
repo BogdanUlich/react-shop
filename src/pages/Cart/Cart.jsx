@@ -7,7 +7,9 @@ import { clearCart } from "../../redux/actions/cart"
 import emptyCart from "../../assets/img/cart/empty-cart.png"
 import { Link } from "react-router-dom"
 import { useEffect } from "react"
-import { fetchCities } from "../../api"
+import { fetchCities, fetchWarhouses } from "../../api"
+import Select from "react-select"
+import Input from "../../components/Form-input/FormInput"
 
 function Cart() {
   const dispatch = useDispatch()
@@ -20,17 +22,32 @@ function Cart() {
 
   useEffect(() => {
     window.scrollTo({ top: 0 })
-  }, [])
-
-  useEffect(() => {
     dispatch(fetchCities())
   }, [])
 
-  const { totalPrice, totalCount, items, cities } = useSelector(({ cart }) => cart)
+  const { totalPrice, totalCount, items, cities, warhouses } = useSelector(({ cart }) => cart)
 
   const addedItems = Object.keys(items).map((key) => {
     return items[key].items[0]
   })
+
+  const optionsCities = cities.map(function (obj) {
+    return {
+      value: obj.id,
+      label: obj.name,
+    }
+  })
+
+  const optionsWarhouses = warhouses.map(function (obj) {
+    return {
+      value: obj.id,
+      label: obj.name,
+    }
+  })
+
+  const onChooseCity = (id) => {
+    dispatch(fetchWarhouses(id))
+  }
 
   return (
     <div className="container">
@@ -78,7 +95,7 @@ function Cart() {
 
             <div className="product-ordering">
               <h2 className="product-ordering__title title">Оплата и доставка</h2>
-              <div className="product-ordering__input-group">
+              <form className="product-ordering__input-group">
                 <div className="product-ordering__input-wrapper">
                   <div className="product-ordering__input-name">
                     Имя <span>*</span>
@@ -89,9 +106,9 @@ function Cart() {
                   <div className="product-ordering__input-name">
                     Фамилия <span>*</span>
                   </div>
-                  <input className="product-ordering__input" type="text" />
+                  <Input className="product-ordering__input" type={"text"} />
                 </div>
-              </div>
+              </form>
               <div className="product-ordering__input-wrapper phone">
                 <div className="product-ordering__input-name">
                   Номер телефона <span>*</span>
@@ -100,35 +117,20 @@ function Cart() {
               </div>
 
               <h2 className="product-ordering__title title">Укажите адрес доставки</h2>
-              <div className="product-ordering__dropdown-group">
-                <div className="product-ordering__dropdown">
-                  <input
-                    type="text"
-                    className="product-ordering__input"
-                    placeholder="Выберите город"
-                  />
-                  <ul className="product-ordering__list">
-                    {cities.map((obj) => (
-                      <li key={obj.id}>{obj.name}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="product-ordering__dropdown">
-                  <input
-                    type="text"
-                    className="product-ordering__input"
-                    placeholder="Выберите отделение новой почты"
-                  />
-                  <ul className="product-ordering__list"></ul>
-                </div>
+              <div className="product-ordering__select-group">
+                <Select
+                  options={optionsCities}
+                  placeholder="Выберите город"
+                  onChange={(e) => onChooseCity(e.value)}
+                />
+                <Select options={optionsWarhouses} placeholder="Выберите отделение новой почты" />
               </div>
               <h2 className="product-ordering__title title">Способ оплаты</h2>
               <div className="product-ordering__switch">
                 <div className="product-ordering__switch-wrapper">
                   <input className="product-ordering__switch-btn" type="radio" />
                   <div className="product-ordering__switch-name">
-                    Оплата на карту (после подтверждения заказа на Ваш номер будет отправлен номер
-                    карты)
+                    Оплата на карту (после подтверждения заказа Вам будет отправлен номер карты)
                   </div>
                 </div>
                 <div className="product-ordering__switch-wrapper">

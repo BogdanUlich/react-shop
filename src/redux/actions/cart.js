@@ -5,10 +5,16 @@ import {
   PLUS_CART_ITEM,
   REMOVE_CART_ITEM,
   SET_CITIES,
+  SET_WARHOUSES,
 } from "../constants"
 
 export const setCities = (payload) => ({
   type: SET_CITIES,
+  payload,
+})
+
+export const setWarhouses = (payload) => ({
+  type: SET_WARHOUSES,
   payload,
 })
 

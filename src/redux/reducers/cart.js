@@ -5,10 +5,12 @@ import {
   PLUS_CART_ITEM,
   REMOVE_CART_ITEM,
   SET_CITIES,
+  SET_WARHOUSES,
 } from "../constants"
 
 const initialState = {
   cities: [],
+  warhouses: [],
   items: {},
   totalPrice: 0,
   totalCount: 0,
@@ -22,6 +24,13 @@ const cart = (state = initialState, action) => {
       return {
         ...state,
         cities: action.payload,
+      }
+    }
+
+    case SET_WARHOUSES: {
+      return {
+        ...state,
+        warhouses: action.payload,
       }
     }
 

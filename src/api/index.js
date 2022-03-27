@@ -1,7 +1,7 @@
 import axios from "axios"
-import { setCities } from "../redux/actions/cart"
+import { setCities, setWarhouses } from "../redux/actions/cart"
 import { setCategory, setCategoryLoaded } from "../redux/actions/category"
-import { setLoaded, setProducts } from "../redux/actions/product"
+import { setLoaded, setProduct, setProducts } from "../redux/actions/product"
 
 // CATEGORIES
 export const fetchCategory = () => (dispatch) => {
@@ -16,7 +16,7 @@ export const fetchCategory = () => (dispatch) => {
 export const fetchProduct = (link) => (dispatch) => {
   dispatch(setLoaded(false))
   axios.get("http://elfbar-shop/?action=getProduct&link=" + link).then(function (response) {
-    dispatch(setProducts([response.data]))
+    dispatch(setProduct([response.data]))
   })
 }
 
@@ -48,6 +48,12 @@ export const fetchPopularProducts = () => (dispatch) => {
 export const fetchCities = () => (dispatch) => {
   axios.get("http://elfbar-shop/?action=getCity&name=Киев").then(function (response) {
     dispatch(setCities(response.data))
+  })
+}
+
+export const fetchWarhouses = (id) => (dispatch) => {
+  axios.get("http://elfbar-shop/?action=getWarehouse&cityRef=" + id).then(function (response) {
+    dispatch(setWarhouses(response.data))
   })
 }
 // CART
