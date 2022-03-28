@@ -7,9 +7,8 @@ import { clearCart } from "../../redux/actions/cart"
 import emptyCart from "../../assets/img/cart/empty-cart.png"
 import { Link } from "react-router-dom"
 import { useEffect } from "react"
-import { fetchCities, fetchWarhouses } from "../../api"
-import Select from "react-select"
-import Input from "../../components/Form-input/FormInput"
+import { fetchCities } from "../../api"
+import CheckoutForm from "../../components/Checkout-form/CheckoutForm"
 
 function Cart() {
   const dispatch = useDispatch()
@@ -30,24 +29,6 @@ function Cart() {
   const addedItems = Object.keys(items).map((key) => {
     return items[key].items[0]
   })
-
-  const optionsCities = cities.map(function (obj) {
-    return {
-      value: obj.id,
-      label: obj.name,
-    }
-  })
-
-  const optionsWarhouses = warhouses.map(function (obj) {
-    return {
-      value: obj.id,
-      label: obj.name,
-    }
-  })
-
-  const onChooseCity = (id) => {
-    dispatch(fetchWarhouses(id))
-  }
 
   return (
     <div className="container">
@@ -92,63 +73,7 @@ function Cart() {
                 </div>
               </div>
             </div>
-
-            <div className="product-ordering">
-              <h2 className="product-ordering__title title">Оплата и доставка</h2>
-              <form className="product-ordering__input-group">
-                <div className="product-ordering__input-wrapper">
-                  <div className="product-ordering__input-name">
-                    Имя <span>*</span>
-                  </div>
-                  <input className="product-ordering__input" type="text" />
-                </div>
-                <div className="product-ordering__input-wrapper">
-                  <div className="product-ordering__input-name">
-                    Фамилия <span>*</span>
-                  </div>
-                  <Input className="product-ordering__input" type={"text"} />
-                </div>
-              </form>
-              <div className="product-ordering__input-wrapper phone">
-                <div className="product-ordering__input-name">
-                  Номер телефона <span>*</span>
-                </div>
-                <input className="product-ordering__input" type="text" />
-              </div>
-
-              <h2 className="product-ordering__title title">Укажите адрес доставки</h2>
-              <div className="product-ordering__select-group">
-                <Select
-                  options={optionsCities}
-                  placeholder="Выберите город"
-                  onChange={(e) => onChooseCity(e.value)}
-                />
-                <Select options={optionsWarhouses} placeholder="Выберите отделение новой почты" />
-              </div>
-              <h2 className="product-ordering__title title">Способ оплаты</h2>
-              <div className="product-ordering__switch">
-                <div className="product-ordering__switch-wrapper">
-                  <input className="product-ordering__switch-btn" type="radio" />
-                  <div className="product-ordering__switch-name">
-                    Оплата на карту (после подтверждения заказа Вам будет отправлен номер карты)
-                  </div>
-                </div>
-                <div className="product-ordering__switch-wrapper">
-                  <input className="product-ordering__switch-btn" type="radio" />
-                  <div className="product-ordering__switch-name">
-                    Наложенный платёж (оплата при получении)
-                  </div>
-                </div>
-              </div>
-              <h2 className="product-ordering__title title">Детали</h2>
-              <textarea
-                className="product-ordering__textarea"
-                name=""
-                id=""
-                cols="30"
-                rows="10"
-              ></textarea>
-            </div>
+            <CheckoutForm cities={cities} warhouses={warhouses} />
           </div>
         ) : (
           <div className="cart__empty">
