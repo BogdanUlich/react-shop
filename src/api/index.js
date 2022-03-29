@@ -1,5 +1,5 @@
 import axios from "axios"
-import { setCities, setWarhouses } from "../redux/actions/cart"
+import { setWarhouses } from "../redux/actions/cart"
 import { setCategory, setCategoryLoaded } from "../redux/actions/category"
 import { setLoaded, setProduct, setProducts } from "../redux/actions/product"
 
@@ -45,14 +45,14 @@ export const fetchPopularProducts = () => (dispatch) => {
 // PRODUCTS
 
 // CART
-export const fetchCities = () => (dispatch) => {
-  axios.get("http://elfbar-shop/?action=getCity&name=Киев").then(function (response) {
-    dispatch(setCities(response.data))
-  })
+export const fetchCities = (cityName) => {
+  return axios
+    .get(`http://elfbar-shop/?action=getCity&name=${cityName}`)
+    .then((response) => response.data)
 }
 
 export const fetchWarhouses = (id) => (dispatch) => {
-  axios.get("http://elfbar-shop/?action=getWarehouse&cityRef=" + id).then(function (response) {
+  axios.get(`http://elfbar-shop/?action=getWarehouse&cityRef=${id}`).then(function (response) {
     dispatch(setWarhouses(response.data))
   })
 }

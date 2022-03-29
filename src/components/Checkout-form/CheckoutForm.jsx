@@ -1,14 +1,12 @@
 import React from "react"
-import { useDispatch } from "react-redux"
 import Select from "react-select"
-import { fetchWarhouses } from "../../api"
-import PropTypes from "prop-types"
+import AsyncSelect from "react-select/async"
+import { fetchCities, fetchWarhouses } from "../../api"
 import { useForm } from "react-hook-form"
 import classNames from "classnames"
+import { useDispatch, useSelector } from "react-redux"
 
-const CheckoutForm = ({ warhouses, cities }) => {
-  const dispatch = useDispatch()
-
+const CheckoutForm = () => {
   const {
     register,
     formState: { errors },
@@ -18,12 +16,13 @@ const CheckoutForm = ({ warhouses, cities }) => {
     mode: "onBlur",
   })
 
-  const optionsCities = cities.map(function (obj) {
-    return {
-      value: obj.id,
-      label: obj.name,
-    }
-  })
+  const dispatch = useDispatch()
+
+  const onChooseCity = (id) => {
+    dispatch(fetchWarhouses(id))
+  }
+
+  const { warhouses } = useSelector(({ cart }) => cart)
 
   const optionsWarhouses = warhouses.map(function (obj) {
     return {
@@ -32,9 +31,6 @@ const CheckoutForm = ({ warhouses, cities }) => {
     }
   })
 
-  const onChooseCity = (id) => {
-    dispatch(fetchWarhouses(id))
-  }
   const onSubmit = (data) => {
     console.log(JSON.stringify(data))
     reset()
@@ -96,12 +92,15 @@ const CheckoutForm = ({ warhouses, cities }) => {
 
         <h3 className="product-ordering__title">Укажите адрес доставки</h3>
         <div className="product-ordering__select-group">
-          <Select
-            options={optionsCities}
-            placeholder="Выберите город"
+          <AsyncSelect
+            cacheOptions
+            placeholder="Введите название города"
+            getOptionLabel={(e) => e.name}
+            getOptionValue={(e) => e.id}
+            loadOptions={fetchCities}
             onChange={(e) => {
-              onChooseCity(e.value)
-              register("city", { value: e.label })
+              onChooseCity(e.id)
+              register("city", { value: e.name })
             }}
           />
           <Select
@@ -154,11 +153,6 @@ const CheckoutForm = ({ warhouses, cities }) => {
       </form>
     </div>
   )
-}
-
-CheckoutForm.propTypes = {
-  warhouses: PropTypes.array,
-  cities: PropTypes.array,
 }
 
 export default CheckoutForm

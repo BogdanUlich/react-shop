@@ -4,7 +4,6 @@ export const REMOVE_CART_ITEM = "REMOVE_CART_ITEM"
 export const PLUS_CART_ITEM = "PLUS_CART_ITEM"
 export const MINUS_CART_ITEM = "MINUS_CART_ITEM"
 export const CLEAR_CART = "CLEAR_CART"
-export const SET_CITIES = "SET_CITIES"
 export const SET_WARHOUSES = "SET_WARHOUSES"
 // CART
 

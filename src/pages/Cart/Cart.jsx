@@ -7,7 +7,6 @@ import { clearCart } from "../../redux/actions/cart"
 import emptyCart from "../../assets/img/cart/empty-cart.png"
 import { Link } from "react-router-dom"
 import { useEffect } from "react"
-import { fetchCities } from "../../api"
 import CheckoutForm from "../../components/Checkout-form/CheckoutForm"
 
 function Cart() {
@@ -21,10 +20,9 @@ function Cart() {
 
   useEffect(() => {
     window.scrollTo({ top: 0 })
-    dispatch(fetchCities())
   }, [])
 
-  const { totalPrice, totalCount, items, cities, warhouses } = useSelector(({ cart }) => cart)
+  const { totalPrice, totalCount, items } = useSelector(({ cart }) => cart)
 
   const addedItems = Object.keys(items).map((key) => {
     return items[key].items[0]
@@ -73,7 +71,7 @@ function Cart() {
                 </div>
               </div>
             </div>
-            <CheckoutForm cities={cities} warhouses={warhouses} />
+            <CheckoutForm />
           </div>
         ) : (
           <div className="cart__empty">

@@ -4,12 +4,10 @@ import {
   MINUS_CART_ITEM,
   PLUS_CART_ITEM,
   REMOVE_CART_ITEM,
-  SET_CITIES,
   SET_WARHOUSES,
 } from "../constants"
 
 const initialState = {
-  cities: [],
   warhouses: [],
   items: {},
   totalPrice: 0,
@@ -20,13 +18,6 @@ const getTotalPrice = (arr) => arr.reduce((sum, obj) => obj.actualPrice + sum, 0
 
 const cart = (state = initialState, action) => {
   switch (action.type) {
-    case SET_CITIES: {
-      return {
-        ...state,
-        cities: action.payload,
-      }
-    }
-
     case SET_WARHOUSES: {
       return {
         ...state,
