@@ -22,9 +22,9 @@ const CheckoutForm = () => {
     dispatch(fetchWarhouses(id))
   }
 
-  const { warhouses } = useSelector(({ cart }) => cart)
+  const { warehouses } = useSelector(({ cart }) => cart)
 
-  const optionsWarhouses = warhouses.map(function (obj) {
+  const optionsWarehouses = warehouses.map(function (obj) {
     return {
       value: obj.id,
       label: obj.name,
@@ -104,10 +104,10 @@ const CheckoutForm = () => {
             }}
           />
           <Select
-            options={optionsWarhouses}
+            options={optionsWarehouses}
             placeholder="Выберите отделение новой почты"
             onChange={(e) => {
-              register("warhouse", { value: e.label })
+              register("warehouse", { value: e.label })
             }}
           />
         </div>
@@ -118,7 +118,7 @@ const CheckoutForm = () => {
               className="product-ordering__switch-btn"
               type="radio"
               name="paymentType"
-              value="Оплата на карту"
+              value="1"
               {...register("paymentType")}
             />
             <div className="product-ordering__switch-name">
@@ -130,7 +130,7 @@ const CheckoutForm = () => {
               className="product-ordering__switch-btn"
               type="radio"
               name="paymentType"
-              value="Наложенный платёж"
+              value="2"
               {...register("paymentType")}
             />
             <div className="product-ordering__switch-name">
