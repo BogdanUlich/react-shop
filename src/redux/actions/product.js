@@ -5,9 +5,9 @@ export const setProducts = (payload) => ({
   payload,
 })
 
-export const setProduct = (items) => ({
+export const setProduct = (payload) => ({
   type: SET_PRODUCT,
-  payload: items,
+  payload,
 })
 
 export const setLoaded = (payload) => ({

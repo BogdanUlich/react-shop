@@ -2,7 +2,19 @@ import { SET_LOADED, SET_PRODUCT, SET_PRODUCTS } from "../constants"
 
 const initialState = {
   items: [],
-  item: [],
+  item: [
+    {
+      name: "Elf Bar 2000 SSSSSSS Disposable PodTEST TEST",
+      description: "asd\r\nasdqwedsfc';skdmf\r\nsdflkj;sdklf'asdf'\r\n",
+      id: 1,
+      link: "6c53d45b5836809f3922b09d22c83374",
+      actualPrice: 280,
+      oldPrice: 300,
+      available: 1,
+      rating: 5,
+      img: "test.png",
+    },
+  ],
   isLoaded: false,
 }
 

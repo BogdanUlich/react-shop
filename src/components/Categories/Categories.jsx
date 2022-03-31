@@ -7,14 +7,14 @@ import LoadingPreview from "./Loading-preview"
 import PropTypes from "prop-types"
 
 function Categories({ categoriesRef }) {
+  const dispatch = useDispatch()
+
   useEffect(() => {
     dispatch(fetchCategory())
   }, [])
 
   const categories = useSelector(({ category }) => category.items)
   const isLoaded = useSelector(({ category }) => category.isLoaded)
-
-  const dispatch = useDispatch()
 
   const onSelectCategory = (category) => {
     dispatch(selectCategory(category))
