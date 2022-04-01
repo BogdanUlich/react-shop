@@ -1,6 +1,6 @@
 import axios from "axios"
-import { setWarhouses } from "../redux/actions/cart"
 import { setCategory, setCategoryLoaded } from "../redux/actions/category"
+import { setWarehouses } from "../redux/actions/cart"
 import { setLoaded, setProduct, setProducts } from "../redux/actions/product"
 
 // CATEGORIES
@@ -51,9 +51,9 @@ export const fetchCities = (cityName) => {
     .then((response) => response.data)
 }
 
-export const fetchWarhouses = (id) => (dispatch) => {
+export const fetchWarehouses = (id) => (dispatch) => {
   axios.get(`http://elfbar-shop/?action=getWarehouse&cityRef=${id}`).then(function (response) {
-    dispatch(setWarhouses(response.data))
+    dispatch(setWarehouses(response.data))
   })
 }
 

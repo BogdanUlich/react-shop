@@ -1,7 +1,7 @@
 import React from "react"
 import Select from "react-select"
 import AsyncSelect from "react-select/async"
-import { createOrder, fetchCities, fetchWarhouses } from "../../api"
+import { createOrder, fetchCities, fetchWarehouses } from "../../api"
 import { useForm } from "react-hook-form"
 import classNames from "classnames"
 import { useDispatch, useSelector } from "react-redux"
@@ -20,13 +20,13 @@ const CheckoutForm = ({ addedItems }) => {
   const dispatch = useDispatch()
 
   const onChooseCity = (id) => {
-    dispatch(fetchWarhouses(id))
+    dispatch(fetchWarehouses(id))
   }
 
-  const { warhouses } = useSelector(({ cart }) => cart)
+  const { warehouses } = useSelector(({ cart }) => cart)
   const { items } = useSelector(({ cart }) => cart)
 
-  const optionsWarhouses = warhouses.map(function (obj) {
+  const optionsWarehouses = warehouses.map(function (obj) {
     return {
       value: obj.id,
       label: obj.name,
@@ -115,10 +115,10 @@ const CheckoutForm = ({ addedItems }) => {
             }}
           />
           <Select
-            options={optionsWarhouses}
+            options={optionsWarehouses}
             placeholder="Выберите отделение новой почты"
             onChange={(e) => {
-              register("warhouse", { value: e.label })
+              register("warehouse", { value: e.label })
             }}
           />
         </div>

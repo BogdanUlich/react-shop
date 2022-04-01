@@ -4,11 +4,11 @@ import {
   MINUS_CART_ITEM,
   PLUS_CART_ITEM,
   REMOVE_CART_ITEM,
-  SET_WARHOUSES,
+  SET_WAREHOUSES,
 } from "../constants"
 
-export const setWarhouses = (payload) => ({
-  type: SET_WARHOUSES,
+export const setWarehouses = (payload) => ({
+  type: SET_WAREHOUSES,
   payload,
 })
 
