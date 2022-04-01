@@ -62,6 +62,13 @@
     @media (max-width: 576px) {
       position: static;
     }
+    @media (max-width: 415px) {
+      max-width: 330px;
+    }
+  }
+  &__items {
+    max-height: 464px;
+    overflow-y: auto;
   }
   &__price {
     margin: 15px 0;

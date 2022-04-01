@@ -43,12 +43,12 @@ function Cart() {
                   </span>
                 </h2>
 
-                <div className="product-cart__item">
+                <div className="product-cart__items">
                   {addedItems.map((obj) => (
                     <CartProduct
                       name={obj.name}
                       price={items[obj.id].totalPrice}
-                      image={obj.imageUrl}
+                      img={obj.img}
                       quantity={items[obj.id].items.length}
                       id={obj.id}
                       key={`${obj.id}_${obj.name}`}
@@ -71,7 +71,7 @@ function Cart() {
                 </div>
               </div>
             </div>
-            <CheckoutForm />
+            <CheckoutForm addedItems={addedItems} />
           </div>
         ) : (
           <div className="cart__empty">

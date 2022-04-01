@@ -37,6 +37,9 @@ body {
 .wrapper {
   position: relative;
   min-height: 100%;
+  @media (max-width: 576px) {
+    overflow-x: hidden;
+  }
 }
 *,
 :after,

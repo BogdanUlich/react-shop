@@ -3,8 +3,9 @@ import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTimes, faPlusCircle, faMinusCircle } from "@fortawesome/free-solid-svg-icons"
 import { removeCartItem, plusCartItem, minusCartItem } from "../../redux/actions/cart"
+import PropTypes from "prop-types"
 
-const CartProduct = ({ name, image, price, quantity, id, dispatch }) => {
+const CartProduct = ({ name, img, price, quantity, id, dispatch }) => {
   const deleteProduct = () => {
     if (window.confirm("Удалить товар из корзины?")) {
       dispatch(removeCartItem(id))
@@ -20,7 +21,11 @@ const CartProduct = ({ name, image, price, quantity, id, dispatch }) => {
   return (
     <div className="cart-product">
       <Link to="/">
-        <img alt="" className="cart-product__img" />
+        <img
+          src={require("../../assets/img/products/" + img)}
+          alt=""
+          className="cart-product__img"
+        />
       </Link>
       <div className="cart-product__info space-between">
         <div className="cart-product__name space-between">
@@ -50,6 +55,15 @@ const CartProduct = ({ name, image, price, quantity, id, dispatch }) => {
       </div>
     </div>
   )
+}
+
+CartProduct.propTypes = {
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number,
+  img: PropTypes.string,
+  id: PropTypes.number,
+  quantity: PropTypes.number,
+  dispatch: PropTypes.func,
 }
 
 export default CartProduct

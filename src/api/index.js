@@ -56,4 +56,8 @@ export const fetchWarhouses = (id) => (dispatch) => {
     dispatch(setWarhouses(response.data))
   })
 }
+
+export const createOrder = (data) => {
+  axios.post("http://elfbar-shop/?action=createOrder", data)
+}
 // CART

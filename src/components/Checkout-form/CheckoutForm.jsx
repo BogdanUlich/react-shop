@@ -1,12 +1,13 @@
 import React from "react"
 import Select from "react-select"
 import AsyncSelect from "react-select/async"
-import { fetchCities, fetchWarhouses } from "../../api"
+import { createOrder, fetchCities, fetchWarhouses } from "../../api"
 import { useForm } from "react-hook-form"
 import classNames from "classnames"
 import { useDispatch, useSelector } from "react-redux"
+import PropTypes from "prop-types"
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ addedItems }) => {
   const {
     register,
     formState: { errors },
@@ -23,6 +24,7 @@ const CheckoutForm = () => {
   }
 
   const { warhouses } = useSelector(({ cart }) => cart)
+  const { items } = useSelector(({ cart }) => cart)
 
   const optionsWarhouses = warhouses.map(function (obj) {
     return {
@@ -32,7 +34,16 @@ const CheckoutForm = () => {
   })
 
   const onSubmit = (data) => {
-    console.log(JSON.stringify(data))
+    const productsInfo = {}
+    addedItems.map(
+      (obj) =>
+        (productsInfo[addedItems.indexOf(obj) + 1] = {
+          id: obj.id,
+          quantity: items[obj.id].items.length,
+        })
+    )
+    data.products = productsInfo
+    createOrder(JSON.stringify(data))
     reset()
   }
 
@@ -118,7 +129,7 @@ const CheckoutForm = () => {
               className="product-ordering__switch-btn"
               type="radio"
               name="paymentType"
-              value="Оплата на карту"
+              value="1"
               {...register("paymentType")}
             />
             <div className="product-ordering__switch-name">
@@ -130,7 +141,7 @@ const CheckoutForm = () => {
               className="product-ordering__switch-btn"
               type="radio"
               name="paymentType"
-              value="Наложенный платёж"
+              value="2"
               {...register("paymentType")}
             />
             <div className="product-ordering__switch-name">
@@ -153,6 +164,10 @@ const CheckoutForm = () => {
       </form>
     </div>
   )
+}
+
+CheckoutForm.propTypes = {
+  addedItems: PropTypes.arrayOf(PropTypes.object),
 }
 
 export default CheckoutForm
