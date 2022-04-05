@@ -91,37 +91,6 @@ ul {
   }
 }
 
-.search {
-  display: flex;
-  width: 100%;
-  max-width: 500px;
-  border-radius: 25px;
-  overflow: hidden;
-  &__input {
-    background: #f1f3f5;
-    padding: 0 15px;
-    height: 35px;
-    width: 100%;
-    outline: 0;
-    border: 0;
-    &::placeholder {
-      color: $text-gray;
-      font-size: 14px;
-    }
-  }
-  &__btn {
-    border: 0;
-    padding-right: 15px;
-    background: #f1f3f5;
-    cursor: pointer;
-    color: $text-gray;
-    font-size: 18px;
-    transition: all 0.2s linear;
-    &:hover {
-      color: $brand-black;
-    }
-  }
-}
 .fade {
   display: none;
   width: 100%;
@@ -149,3 +118,4 @@ ul {
 @import "./components/Left-menu/left-menu.scss";
 @import "./components/Footer/footer.scss";
 @import "./components/Cart-product/cart-product.scss";
+@import "./components/Search-input/search-input.scss";

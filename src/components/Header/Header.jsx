@@ -1,12 +1,7 @@
 import React, { useRef } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import PropTypes from "prop-types"
-import {
-  faShoppingCart,
-  faSortDown,
-  faArrowCircleUp,
-  faSearch,
-} from "@fortawesome/free-solid-svg-icons"
+import { faShoppingCart, faSortDown, faArrowCircleUp } from "@fortawesome/free-solid-svg-icons"
 import { faTelegram, faInstagram } from "@fortawesome/free-brands-svg-icons"
 import { useEffect, useState } from "react/cjs/react.development"
 import classNames from "classnames"
@@ -14,6 +9,7 @@ import { Link } from "react-router-dom"
 import LeftMenu from "../Left-menu/Left-menu"
 import { useDispatch, useSelector } from "react-redux"
 import { setVisibleMenu } from "../../redux/actions/leftMenu"
+import SearchInput from "../Search-input/Search-input"
 
 function Header({ numbers }) {
   const [visiblePopup, setVisiblePopup] = useState(false)
@@ -83,12 +79,7 @@ function Header({ numbers }) {
           <Link to="/" className="header__logo">
             Logo
           </Link>
-          <div className="header__search search">
-            <input type="text" className="search__input" placeholder="Я ищу..." />
-            <button className="search__btn">
-              <FontAwesomeIcon icon={faSearch} />
-            </button>
-          </div>
+          <SearchInput className={"header__search"} />
           <div className="header__contacts">
             <a href="" className="header__contacts-link">
               <FontAwesomeIcon className="header__contacts-icon" icon={faTelegram} />

@@ -56,15 +56,6 @@ function Cart() {
                     />
                   ))}
                 </div>
-
-                <div className="product-cart__price space-between">
-                  <span>Товары</span>
-                  <span>240 грн</span>
-                </div>
-                <div className="product-cart__delivery-price space-between">
-                  <span>Доставка</span>
-                  <span>60 грн</span>
-                </div>
                 <div className="product-cart__total space-between">
                   <span>Итого</span>
                   <span>{totalPrice} грн</span>

@@ -58,6 +58,22 @@ export const fetchWarehouses = (id) => (dispatch) => {
 }
 
 export const createOrder = (data) => {
-  axios.post("http://elfbar-shop/?action=createOrder", data)
+  axios.post("http://elfbar-shop/?action=createOrder", data).then(function (response) {
+    console.log(response.data)
+  })
 }
 // CART
+
+// SEARCH
+export const searchProduct = (productName, showProducts, toggleVisibleSearchList) => {
+  if (productName) {
+    return axios
+      .get(`http://elfbar-shop/?action=searchProduct&name=${productName}`)
+      .then((response) => showProducts(response.data))
+      .then(toggleVisibleSearchList(true))
+      .catch(() => showProducts(false))
+  } else {
+    toggleVisibleSearchList(false)
+  }
+}
+// SEARCH

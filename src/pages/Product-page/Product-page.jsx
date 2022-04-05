@@ -16,7 +16,7 @@ function ProductPage() {
   useEffect(() => {
     dispatch(fetchProduct(id))
     window.scrollTo({ top: 0 })
-  }, [])
+  }, [id])
 
   const onAddToCart = () => {
     const obj = {
