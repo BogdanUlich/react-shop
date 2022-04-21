@@ -1,6 +1,5 @@
 import axios from "axios"
 import { setCategory, setCategoryLoaded } from "../redux/actions/category"
-import { setWarehouses } from "../redux/actions/cart"
 import { setLoaded, setProduct, setProducts } from "../redux/actions/product"
 
 // CATEGORIES
@@ -51,16 +50,18 @@ export const fetchCities = (cityName) => {
     .then((response) => response.data)
 }
 
-export const fetchWarehouses = (id) => (dispatch) => {
-  axios.get(`http://elfbar-shop/?action=getWarehouse&cityRef=${id}`).then(function (response) {
-    dispatch(setWarehouses(response.data))
-  })
+export const fetchWarehouses = (id, setWarehouses) => {
+  axios
+    .get(`http://elfbar-shop/?action=getWarehouse&cityRef=${id}`)
+    .then((response) => setWarehouses(response.data))
 }
 
-export const createOrder = (data) => {
-  axios.post("http://elfbar-shop/?action=createOrder", data).then(function (response) {
-    console.log(response.data)
-  })
+export const createOrder = (data, showModal, setOrderNumber) => {
+  axios
+    .post("http://elfbar-shop/?action=createOrder", data)
+    .then((response) => setOrderNumber(response.data))
+    .then(showModal())
+    .catch((response) => console.log(response))
 }
 // CART
 

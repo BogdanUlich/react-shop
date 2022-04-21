@@ -52,7 +52,7 @@ const SearchInput = ({ className }) => {
       <input
         type="text"
         className="search__input"
-        placeholder="Я ищу..."
+        placeholder="Введите название товара"
         onChange={(e) => onInputChange(e.target.value)}
         onFocus={() => onInputFocus()}
         ref={inputRef}

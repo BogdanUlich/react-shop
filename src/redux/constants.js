@@ -4,7 +4,6 @@ export const REMOVE_CART_ITEM = "REMOVE_CART_ITEM"
 export const PLUS_CART_ITEM = "PLUS_CART_ITEM"
 export const MINUS_CART_ITEM = "MINUS_CART_ITEM"
 export const CLEAR_CART = "CLEAR_CART"
-export const SET_WAREHOUSES = "SET_WAREHOUSES"
 // CART
 
 // CATEGORY
@@ -20,9 +19,5 @@ export const SET_SORT_BY = "SET_SORT_BY"
 export const SET_PRODUCTS = "SET_PRODUCTS"
 export const SET_PRODUCT = "SET_PRODUCT"
 // PRODUCTS
-
-// LEFT-MENU
-export const SET_VISIBLE_MENU = "SET_VISIBLE_MENU"
-// LEFT-MENU
 
 export const SET_LOADED = "SET_LOADED"

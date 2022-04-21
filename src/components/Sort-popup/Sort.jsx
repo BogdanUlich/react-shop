@@ -5,6 +5,7 @@ import { useEffect, useState } from "react/cjs/react.development"
 import classNames from "classnames"
 import { setSortBy } from "../../redux/actions/filters"
 import { useDispatch } from "react-redux"
+import PropTypes from "prop-types"
 
 const Sort = React.memo(function SortPopup({ sortItems, activeSortType }) {
   const activelabel = sortItems.find((obj) => obj.type === activeSortType.type).name
@@ -64,5 +65,10 @@ const Sort = React.memo(function SortPopup({ sortItems, activeSortType }) {
     </div>
   )
 })
+
+Sort.propTypes = {
+  sortItems: PropTypes.object,
+  activeSortType: PropTypes.string,
+}
 
 export default Sort

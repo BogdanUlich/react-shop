@@ -4,7 +4,6 @@ import {
   MINUS_CART_ITEM,
   PLUS_CART_ITEM,
   REMOVE_CART_ITEM,
-  SET_WAREHOUSES,
 } from "../constants"
 
 const initialState = {
@@ -18,13 +17,6 @@ const getTotalPrice = (arr) => arr.reduce((sum, obj) => obj.actualPrice + sum, 0
 
 const cart = (state = initialState, action) => {
   switch (action.type) {
-    case SET_WAREHOUSES: {
-      return {
-        ...state,
-        warehouses: action.payload,
-      }
-    }
-
     case ADD_ITEM_TO_CART: {
       const currentItems = !state.items[action.payload.id]
         ? [action.payload]

@@ -7,14 +7,15 @@ import { useEffect, useState } from "react/cjs/react.development"
 import classNames from "classnames"
 import { Link } from "react-router-dom"
 import LeftMenu from "../Left-menu/Left-menu"
-import { useDispatch, useSelector } from "react-redux"
-import { setVisibleMenu } from "../../redux/actions/leftMenu"
+import { useSelector } from "react-redux"
 import SearchInput from "../Search-input/Search-input"
+import Fade from "../Fade/Fade"
 
 function Header({ numbers }) {
-  const [visiblePopup, setVisiblePopup] = useState(false)
-
   const numRef = useRef()
+
+  // POPUP
+  const [visiblePopup, setVisiblePopup] = useState(false)
 
   useEffect(() => {
     document.body.addEventListener("click", closePopup)
@@ -30,7 +31,9 @@ function Header({ numbers }) {
       setVisiblePopup(false)
     }
   }
+  // POPUP
 
+  // SCROLLTOP
   const [showScrollTop, setShowScrollTop] = useState(false)
 
   const scrollTopRef = useRef()
@@ -50,19 +53,27 @@ function Header({ numbers }) {
   const scrollTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
+  // SCROLLTOP
 
-  const dispatch = useDispatch()
-  const visibleMenu = useSelector(({ leftMenu }) => leftMenu.visibleMenu)
+  // LEFTMENU
+  const [visibleMenu, setVisibleMenu] = useState(false)
 
-  const toggleVisibleMenu = () => {
-    dispatch(setVisibleMenu(true))
+  const openLeftMenu = () => {
+    setVisibleMenu(true)
+    setVisibleFade(true)
     document.body.style.overflow = "hidden"
   }
 
   const closeLeftMenu = () => {
-    dispatch(setVisibleMenu(false))
+    setVisibleMenu(false)
+    setVisibleFade(false)
     document.body.style.overflow = "auto"
   }
+  // LEFTMENU
+
+  // FADE
+  const [visibleFade, setVisibleFade] = useState(false)
+  // FADE
 
   const totalCount = useSelector(({ cart }) => cart.totalCount)
 
@@ -70,7 +81,7 @@ function Header({ numbers }) {
     <div>
       <header className="header">
         <div className="header__container container">
-          <button className="header__menu" onClick={() => toggleVisibleMenu()}>
+          <button className="header__menu" onClick={openLeftMenu}>
             <div className="header__menu-burger">
               <span></span>
             </div>
@@ -125,12 +136,9 @@ function Header({ numbers }) {
         <FontAwesomeIcon icon={faArrowCircleUp} />
       </div>
 
-      <LeftMenu isActive={visibleMenu} />
+      <LeftMenu onClick={closeLeftMenu} visibleMenu={visibleMenu} />
 
-      <div
-        onClick={() => closeLeftMenu()}
-        className={classNames("fade", visibleMenu ? "active" : "")}
-      ></div>
+      <Fade onClick={closeLeftMenu} visibleFade={visibleFade} />
     </div>
   )
 }

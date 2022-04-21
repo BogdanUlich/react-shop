@@ -1,11 +1,15 @@
-import React from "react"
+import React, { useState } from "react"
 import Select from "react-select"
 import AsyncSelect from "react-select/async"
 import { createOrder, fetchCities, fetchWarehouses } from "../../api"
 import { useForm } from "react-hook-form"
 import classNames from "classnames"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import PropTypes from "prop-types"
+import Modal from "../Modal-popup/Modal"
+import Fade from "../Fade/Fade"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons"
 
 const CheckoutForm = ({ addedItems }) => {
   const {
@@ -17,14 +21,17 @@ const CheckoutForm = ({ addedItems }) => {
     mode: "onBlur",
   })
 
-  const dispatch = useDispatch()
+  const [selectedCity, setSelectedCity] = useState(false)
+  const [warehouses, setWarehouses] = useState([])
+  const [selectedWarehouse, setSelectedWarehouse] = useState(false)
+  const [visibleFade, setVisibleFade] = useState(false)
+  const [visibleModal, setVisibleModal] = useState(false)
+  const [orderNumber, setOrderNumber] = useState()
+  const { items } = useSelector(({ cart }) => cart)
 
   const onChooseCity = (id) => {
-    dispatch(fetchWarehouses(id))
+    fetchWarehouses(id, setWarehouses)
   }
-
-  const { warehouses } = useSelector(({ cart }) => cart)
-  const { items } = useSelector(({ cart }) => cart)
 
   const optionsWarehouses = warehouses.map(function (obj) {
     return {
@@ -43,8 +50,18 @@ const CheckoutForm = ({ addedItems }) => {
         })
     )
     data.products = productsInfo
-    createOrder(JSON.stringify(data))
+    createOrder(JSON.stringify(data), showModal, setOrderNumber)
     reset()
+  }
+
+  const showModal = () => {
+    setVisibleModal(true)
+    setVisibleFade(true)
+  }
+
+  const closeModal = () => {
+    setVisibleModal(false)
+    setVisibleFade(false)
   }
 
   return (
@@ -111,6 +128,7 @@ const CheckoutForm = ({ addedItems }) => {
             loadOptions={fetchCities}
             onChange={(e) => {
               onChooseCity(e.id)
+              setSelectedCity(e.name)
               register("city", { value: e.name })
             }}
           />
@@ -119,6 +137,7 @@ const CheckoutForm = ({ addedItems }) => {
             placeholder="Выберите отделение новой почты"
             onChange={(e) => {
               register("warehouse", { value: e.label })
+              setSelectedWarehouse(e.label)
             }}
           />
         </div>
@@ -158,10 +177,27 @@ const CheckoutForm = ({ addedItems }) => {
           rows="10"
           {...register("details")}
         ></textarea>
-        <div className="product-ordering__btn">
-          <input type="submit" className="btn-black" value="Оформить заказ" />
+        <div
+          className={
+            selectedCity && selectedWarehouse
+              ? "product-ordering__btn"
+              : "product-ordering__btn disabled"
+          }
+        >
+          <div className="product-ordering__btn-tooltip">Выберите адрес доставки</div>
+          <input
+            type="submit"
+            className={selectedCity && selectedWarehouse ? "btn-black" : "btn-black disabled"}
+            value="Оформить заказ"
+          />
         </div>
       </form>
+      <Modal visibleModal={visibleModal} onClick={closeModal}>
+        <FontAwesomeIcon className="modal__success-icon" icon={faCheckCircle} />
+        <div className="modal__text">{`Заказ ${orderNumber} оформлен успешно`}</div>
+        <div className="modal__subtext">С вами свяжется менеджер для подтверждения заказа</div>
+      </Modal>
+      <Fade visibleFade={visibleFade} onClick={closeModal} />
     </div>
   )
 }

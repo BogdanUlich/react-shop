@@ -18,14 +18,15 @@ function Main() {
     dispatch(fetchPopularProducts())
   }, [])
 
-  const categoriesRef = useRef(null)
+  const categoriesRef = useRef()
 
   const executeScroll = () => {
-    categoriesRef.current.scrollIntoView({ behavior: "smooth" })
+    const categoriesHeight = categoriesRef.current.offsetTop - 55
+    scrollTo({ top: categoriesHeight, behavior: "smooth" })
   }
 
   return (
-    <div className="main">
+    <div className="main" id="main">
       <section className="intro">
         <div className="intro__container container">
           <div className="intro__info">
