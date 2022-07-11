@@ -9,7 +9,7 @@ import { Link } from "react-router-dom"
 const SearchInput = ({ className }) => {
   const [products, setProducts] = useState([])
   const [visibleSearchList, setVisibleSearchList] = useState(false)
-  const [inputValue, setInputValue] = useState(false)
+  const [inputValue, setInputValue] = useState("")
 
   const inputRef = useRef()
 
@@ -27,8 +27,7 @@ const SearchInput = ({ className }) => {
   }
 
   const clearInputValue = () => {
-    inputRef.current.value = ""
-    setInputValue(false)
+    setInputValue("")
     setProducts(false)
   }
 
@@ -50,6 +49,7 @@ const SearchInput = ({ className }) => {
   return (
     <div className={classNames("search", className)}>
       <input
+        value={inputValue}
         type="text"
         className="search__input"
         placeholder="Введите название товара"

@@ -67,8 +67,8 @@ const Sort = React.memo(function SortPopup({ sortItems, activeSortType }) {
 })
 
 Sort.propTypes = {
-  sortItems: PropTypes.object,
-  activeSortType: PropTypes.string,
+  sortItems: PropTypes.array,
+  activeSortType: PropTypes.object,
 }
 
 export default Sort

@@ -50,9 +50,7 @@ function Main() {
         <div className="popular-products__container container">
           {isLoaded
             ? items.map((obj) => <ProductCard key={obj.id} {...obj} />)
-            : Array(8)
-                .fill(0)
-                .map((_, index) => <LoadingPreview key={index} />)}
+            : [...new Array(8)].map((_, index) => <LoadingPreview key={index} />)}
         </div>
       </section>
     </div>

@@ -8,6 +8,7 @@ import loading from "../../assets/img/loading.gif"
 
 function ProductPage() {
   const { id } = useParams()
+  console.log(id)
   const dispatch = useDispatch()
 
   const product = useSelector(({ products }) => products.item[0])

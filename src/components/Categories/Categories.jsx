@@ -42,9 +42,7 @@ function Categories({ categoriesRef }) {
                 {!obj.shw ? <div className="category__label">Нет в наличии</div> : ""}
               </Link>
             ))
-          : Array(4)
-              .fill(0)
-              .map((_, index) => <LoadingPreview key={index} />)}
+          : [...new Array(4)].map((_, index) => <LoadingPreview key={index} />)}
       </div>
     </section>
   )
