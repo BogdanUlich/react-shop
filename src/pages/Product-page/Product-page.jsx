@@ -83,7 +83,7 @@ function ProductPage() {
                                 Количество: <input type="text" placeholder="1" />
                             </div> */}
                 <button onClick={onAddToCart} className="product__btn btn-black">
-                  В корзину!
+                  В корзину!!
                 </button>
               </div>
             </div>
